@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<body>
+
+<div ng-app="tbbtApp" ng-controller="tbbtCtrl" class="container-fluid"> 
+
+<table class="table">
+  <tr>
+    <th>NAME</th>
+    <th>IN-BAG</th>
+    <th>EQUIPPED</th>
+    <th>HEAD</th>
+    <th>NECK</th>
+    <th>SHOULDER</th>
+    <th>BACK</th>
+    <th>CHEST</th>
+    <th>WRIST</th>
+    <th>HANDS</th>
+    <th>WAIST</th>
+    <th>LEGS</th>
+    <th>FEET</th>
+    <th>FINGER1</th>
+    <th>FINGER2</th>
+    <th>TRINKET1</th>
+    <th>TRINKET2</th>
+    <th>MAIN-HAND</th>
+    <th>OFF-HAND</th>
+  </tr>
+  <tr ng-repeat="row in rowList | orderBy : 'items.averageItemLevel' : true">
+    <td>{{ row.name }}</td>
+    <td>{{ row.items.averageItemLevel }}</td>
+    <td>{{ row.items.averageItemLevelEquipped }}</td>
+    <td>{{ row.items.head.itemLevel }}</td>
+    <td>{{ row.items.neck.itemLevel }}</td>
+    <td>{{ row.items.shoulder.itemLevel }}</td>
+    <td>{{ row.items.back.itemLevel }}</td>
+    <td>{{ row.items.chest.itemLevel }}</td>
+    <td>{{ row.items.wrist.itemLevel }}</td>
+    <td>{{ row.items.hands.itemLevel }}</td>
+    <td>{{ row.items.waist.itemLevel }}</td>
+    <td>{{ row.items.legs.itemLevel }}</td>
+    <td>{{ row.items.feet.itemLevel }}</td>
+    <td>{{ row.items.finger1.itemLevel }}</td>
+    <td>{{ row.items.finger2.itemLevel }}</td>
+    <td>{{ row.items.trinket1.itemLevel }}</td>
+    <td>{{ row.items.trinket2.itemLevel }}</td>
+    <td>{{ row.items.mainHand.itemLevel }}</td>
+    <td>{{ row.items.offHand.itemLevel }}</td>
+  </tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('tbbtApp', []);
+app.controller('tbbtCtrl', function($scope, $http) {
+	$http.get("https://us.api.battle.net/wow/guild/Frostmourne/The%20Big%20Bad%20Theory?fields=members&locale=en_US&apikey=998b45vfwkxvg6ftz5vurk8z789daq37")
+	.success(function (data) {
+    var members = data.members;
+    $scope.rowList = [];
+
+    for(i=0; i<members.length; i++){
+      $http.get("https://us.api.battle.net/wow/character/Frostmourne/"+members[i].character.name+"?fields=items&locale=en_US&apikey=998b45vfwkxvg6ftz5vurk8z789daq37")
+      .success(function (rowdata) {
+        $scope.rowList.push(rowdata);
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
