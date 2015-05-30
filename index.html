@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app="tbbtApp">
+
+<head>
+  <meta charset="utf-8" />
+  <title>The Big Bad Theory</title>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <script data-require="angular.js@1.4.x" src="https://code.angularjs.org/1.4.0/angular.js" data-semver="1.4.0"></script>
+  <script src="app.js"></script>
+</head>
+
+<div ng-controller="tbbtCtrl" class="container-fluid">
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>IN-BAG</th>
+        <th>EQUIPPED</th>
+        <th>HEAD</th>
+        <th>NECK</th>
+        <th>SHOULDER</th>
+        <th>BACK</th>
+        <th>CHEST</th>
+        <th>WRIST</th>
+        <th>HANDS</th>
+        <th>WAIST</th>
+        <th>LEGS</th>
+        <th>FEET</th>
+        <th>FINGER1</th>
+        <th>FINGER2</th>
+        <th>TRINKET1</th>
+        <th>TRINKET2</th>
+        <th>MAIN-HAND</th>
+        <th>OFF-HAND</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in rowList | orderBy : 'items.averageItemLevel' : true">
+        <td>{{ row.name }}</td>
+        <td>{{ row.items.averageItemLevel }}</td>
+        <td>{{ row.items.averageItemLevelEquipped }}</td>
+        <td>{{ row.items.head.itemLevel }}</td>
+        <td>{{ row.items.neck.itemLevel }}</td>
+        <td>{{ row.items.shoulder.itemLevel }}</td>
+        <td>{{ row.items.back.itemLevel }}</td>
+        <td>{{ row.items.chest.itemLevel }}</td>
+        <td>{{ row.items.wrist.itemLevel }}</td>
+        <td>{{ row.items.hands.itemLevel }}</td>
+        <td>{{ row.items.waist.itemLevel }}</td>
+        <td>{{ row.items.legs.itemLevel }}</td>
+        <td>{{ row.items.feet.itemLevel }}</td>
+        <td>{{ row.items.finger1.itemLevel }}</td>
+        <td>{{ row.items.finger2.itemLevel }}</td>
+        <td>{{ row.items.trinket1.itemLevel }}</td>
+        <td>{{ row.items.trinket2.itemLevel }}</td>
+        <td>{{ row.items.mainHand.itemLevel }}</td>
+        <td>{{ row.items.offHand.itemLevel }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</html>
