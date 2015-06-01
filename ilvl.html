@@ -1,0 +1,48 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>NAME</th>
+      <th>IN-BAG</th>
+      <th>EQUIPPED</th>
+      <th>HEAD</th>
+      <th>NECK</th>
+      <th>SHOULDER</th>
+      <th>BACK</th>
+      <th>CHEST</th>
+      <th>WRIST</th>
+      <th>HANDS</th>
+      <th>WAIST</th>
+      <th>LEGS</th>
+      <th>FEET</th>
+      <th>FINGER1</th>
+      <th>FINGER2</th>
+      <th>TRINKET1</th>
+      <th>TRINKET2</th>
+      <th>MAIN-HAND</th>
+      <th>OFF-HAND</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in rowList | orderBy : 'items.averageItemLevel' : true">
+      <td ng-class="getClass(row.class)">{{ row.name }}</td>
+      <td ng-class="iLvlFilter(row.items.averageItemLevel)">{{ row.items.averageItemLevel }}</td>
+      <td>{{ row.items.averageItemLevelEquipped }}</td>
+      <td>{{ row.items.head.itemLevel }}</td>
+      <td>{{ row.items.neck.itemLevel }}</td>
+      <td>{{ row.items.shoulder.itemLevel }}</td>
+      <td>{{ row.items.back.itemLevel }}</td>
+      <td>{{ row.items.chest.itemLevel }}</td>
+      <td>{{ row.items.wrist.itemLevel }}</td>
+      <td>{{ row.items.hands.itemLevel }}</td>
+      <td>{{ row.items.waist.itemLevel }}</td>
+      <td>{{ row.items.legs.itemLevel }}</td>
+      <td>{{ row.items.feet.itemLevel }}</td>
+      <td>{{ row.items.finger1.itemLevel }}</td>
+      <td>{{ row.items.finger2.itemLevel }}</td>
+      <td>{{ row.items.trinket1.itemLevel }}</td>
+      <td>{{ row.items.trinket2.itemLevel }}</td>
+      <td>{{ row.items.mainHand.itemLevel }}</td>
+      <td>{{ row.items.offHand.itemLevel }}</td>
+    </tr>
+  </tbody>
+</table>
