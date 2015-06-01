@@ -1,8 +1,28 @@
-var app = angular.module('tbbtApp', []);
 var realm = "Frostmourne";
 var guildName = "The Big Bad Theory";
 var apiKey = "998b45vfwkxvg6ftz5vurk8z789daq37";
-app.controller('tbbtCtrl', function($scope, $http) {
+
+// create the module
+var app = angular.module("tbbtApp", ["ngRoute"]);
+
+// configure routes
+app.config(function($routeProvider) {
+  $routeProvider
+  .when("/ilvl", {
+    templateUrl: "ilvl.html",
+    controller: "ilvlCtrl"
+  })
+    .when("/roster", {
+      templateUrl: "roster.html",
+      controller: "rosterCtrl"
+    })
+    .otherwise({
+      redirectTo: "/ilvl"
+    });
+});
+
+// create the controller
+app.controller("ilvlCtrl", function($scope, $http) {
   $http.get("https://us.api.battle.net/wow/guild/" + realm + "/" + guildName + "?fields=members&locale=en_US&apikey=" + apiKey)
     .success(function(data) {
       var members = data.members;
@@ -57,5 +77,8 @@ app.controller('tbbtCtrl', function($scope, $http) {
       return ""
     }
   }
+});
 
+app.controller("rosterCtrl", function($scope) {
+  // TODO
 });
