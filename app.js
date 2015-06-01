@@ -22,8 +22,8 @@ app.controller('tbbtCtrl', function($scope, $http) {
       }
     });
 
-  $scope.iLvlFilter = function(str) {
-    if (str < 655) {
+  $scope.iLvlFilter = function(data) {
+    if (data < 655) {
       return "warning"
     } else {
       return ""
