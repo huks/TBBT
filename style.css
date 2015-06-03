@@ -1,3 +1,7 @@
+.table {
+  text-align: center;
+}
+
 .deathknight {
   background-color: #C41F3B;
 }
@@ -30,4 +34,8 @@
 }
 .warrior {
   background-color: #C79C6E;
+}
+
+body {
+  padding-top: 70px;
 }
