@@ -1,1 +1,50 @@
-TODO
+<div class="container-fluid">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th class="text-right">NAME</th>
+        <th class="text-center">IN-BAG</th>
+        <th class="text-center">EQUIPPED</th>
+        <th class="text-center">HEAD</th>
+        <th class="text-center">NECK</th>
+        <th class="text-center">SHOULDER</th>
+        <th class="text-center">BACK</th>
+        <th class="text-center">CHEST</th>
+        <th class="text-center">WRIST</th>
+        <th class="text-center">HANDS</th>
+        <th class="text-center">WAIST</th>
+        <th class="text-center">LEGS</th>
+        <th class="text-center">FEET</th>
+        <th class="text-center">FINGER1</th>
+        <th class="text-center">FINGER2</th>
+        <th class="text-center">TRINKET1</th>
+        <th class="text-center">TRINKET2</th>
+        <th class="text-center">MAIN-HAND</th>
+        <th class="text-center">OFF-HAND</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in rowList | orderBy : 'items.averageItemLevel' : true">
+        <td ng-class="getClass(row.class)" class="text-right text-uppercase">{{ row.name }}</td>
+        <td ng-class="iLvlFilter(row.items.averageItemLevel)">{{ row.items.averageItemLevel }}</td>
+        <td>{{ row.items.averageItemLevelEquipped }}</td>
+        <td>{{ row.items.head.itemLevel }}</td>
+        <td>{{ row.items.neck.itemLevel }}</td>
+        <td>{{ row.items.shoulder.itemLevel }}</td>
+        <td>{{ row.items.back.itemLevel }}</td>
+        <td>{{ row.items.chest.itemLevel }}</td>
+        <td>{{ row.items.wrist.itemLevel }}</td>
+        <td>{{ row.items.hands.itemLevel }}</td>
+        <td>{{ row.items.waist.itemLevel }}</td>
+        <td>{{ row.items.legs.itemLevel }}</td>
+        <td>{{ row.items.feet.itemLevel }}</td>
+        <td>{{ row.items.finger1.itemLevel }}</td>
+        <td>{{ row.items.finger2.itemLevel }}</td>
+        <td>{{ row.items.trinket1.itemLevel }}</td>
+        <td>{{ row.items.trinket2.itemLevel }}</td>
+        <td>{{ row.items.mainHand.itemLevel }}</td>
+        <td>{{ row.items.offHand.itemLevel }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
