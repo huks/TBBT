@@ -1,23 +1,42 @@
-angular.module("tbbtApp").controller("ilvlCtrl", ["$scope", "$http",
-  function($scope, $http) {
-    $http.get("https://us.api.battle.net/wow/guild/" + realm + "/" + guildName + "?fields=members&locale=en_US&apikey=" + apiKey)
-      .success(function(data) {
-        var members = data.members;
-        $scope.rowList = [];
+(function() {
+  var app = angular.module("tbbtApp");
 
-        function getItemLvl(rowdata) {
-          $http.get("https://us.api.battle.net/wow/character/" + realm + "/" + rowdata.character.name + "?fields=items&locale=en_US&apikey=" + apiKey)
-            .success(function(rowdata) {
-              if (rowdata.level == 100 && rowdata.items.averageItemLevel >= 640) {
-                $scope.rowList.push(rowdata);
-              }
-            });
-        }
+  // Factory
+  var ilvlFactory = function(wowapi) {
+    
+    var ilvlList = [];
 
-        for (i = 0; i < members.length; i++) {
-          getItemLvl(members[i]);
-        }
-      });
+    var pushRowdata = function(rowdata) {
+      if (rowdata.level == 100 && rowdata.items.averageItemLevel >= 640) {
+        ilvlList.push(rowdata);
+      }
+    };
+
+    var createIlvlList = function(guild) {
+      for (i = 0; i < guild.members.length; i++) {
+        wowapi.getCharacterItems(guild.members[i].character.name).success(pushRowdata);
+      }
+    };
+
+    var getIlvlList = function() {
+      ilvlList = []; // init...
+      wowapi.getGuildMembers().success(createIlvlList);
+      return ilvlList;
+    };
+
+    return {
+      pushRowdata: pushRowdata,
+      createIlvlList: createIlvlList,
+      getIlvlList: getIlvlList
+    };
+  }
+
+  app.factory("ilvlFactory", ilvlFactory);
+
+  // Controller
+  var ilvlCtrl = function($scope, ilvlFactory) {
+
+    $scope.ilvlList = ilvlFactory.getIlvlList();
 
     $scope.iLvlFilter = function(data) {
       if (data < 655) {
@@ -54,5 +73,9 @@ angular.module("tbbtApp").controller("ilvlCtrl", ["$scope", "$http",
         return ""
       }
     }
+
   }
-]);
+
+  app.controller("ilvlCtrl", ilvlCtrl);
+
+}());

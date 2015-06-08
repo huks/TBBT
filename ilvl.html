@@ -24,7 +24,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="row in rowList | orderBy : 'items.averageItemLevel' : true">
+      <tr ng-repeat="row in ilvlList | orderBy : 'items.averageItemLevel' : true">
         <td ng-class="getClass(row.class)" class="text-right text-uppercase">{{ row.name }}</td>
         <td ng-class="iLvlFilter(row.items.averageItemLevel)">{{ row.items.averageItemLevel }}</td>
         <td>{{ row.items.averageItemLevelEquipped }}</td>
