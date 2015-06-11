@@ -1,0 +1,67 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <table class="table">
+        <tr data-ng-repeat="raider in tanks">
+          <td>Tank</td>
+          <td><input type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}"></td>
+          <td>{{raider.json.items.averageItemLevel}}</td>
+          <td><button class="btn btn-default" ng-show="$last" ng-click="removeTank()">-</button></td>
+        </tr>
+        <tr ng-hide="tanks.length == 3">
+          <td colspan="4"><button class="btn btn-default pull-right" ng-click="addNewTank()">Add</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <table class="table">
+        <tr data-ng-repeat="raider in healers">
+          <td>Healer</td>
+          <td><input type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}"></td>
+          <td>{{raider.json.items.averageItemLevel}}</td>
+          <td><button class="btn btn-default" ng-show="$last" ng-click="removeHealer()">-</button></td>
+        </tr>
+        <tr ng-hide="healers.length == 5">
+          <td colspan="4"><button class="btn btn-default pull-right" ng-click="addNewHealer()">Add</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <table class="table">
+        <tr data-ng-repeat="raider in dps">
+          <td>DPS</td>
+          <td><input type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}"></td>
+          <td>{{raider.json.items.averageItemLevel}}</td>
+          <td><button class="btn btn-default" ng-show="$last" ng-click="removeDps()">-</button></td>
+        </tr>
+        <tr ng-hide="dps.length == 13">
+          <td colspan="4"><button class="btn btn-default pull-right" ng-click="addNewDps()">Add</button></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-3">
+      <table class="table">
+        <tr>
+          <td>Tank</td>
+          <td>{{getTanksNum()}}</td>
+          <td>{{getTanksIlvl() | number:0}}</td>
+        </tr>
+        <tr>
+          <td>Healer</td>
+          <td>{{getHealersNum()}}</td>
+          <td>{{getHealersIlvl() | number:0}}</td>
+        </tr>
+        <tr>
+          <td>DPS</td>
+          <td>{{getDpsNum()}}</td>
+          <td>{{getDpsIlvl() | number:0}}</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td>{{getRaidersNum()}}</td>
+          <td>{{getRaidersIlvl() | number:0}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

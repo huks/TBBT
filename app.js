@@ -3,16 +3,20 @@
   
   app.config(function($routeProvider) {
   $routeProvider
-    .when("/ilvl", {
-      templateUrl: "ilvl.html",
-      controller: "ilvlCtrl"
+    .when("/isepic", {
+      templateUrl: "isEpic.html",
+      controller: "isEpicCtrl"
+    })
+    .when("/raider", {
+      templateUrl: "raider.html",
+      controller: "raiderCtrl"
     })
     .when("/roster", {
       templateUrl: "roster.html",
       controller: "rosterCtrl"
     })
     .otherwise({
-      redirectTo: "/ilvl"
+      redirectTo: "/raider"
     });
   });
 }());
