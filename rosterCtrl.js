@@ -14,7 +14,10 @@
 
     var createRoster = function(guild) {
       for (i = 0; i < guild.members.length; i++) {
-        wowapi.getCharacterItems(guild.members[i].character.name).success(pushRowdata);
+        if (guild.members[i].rank < 4) {
+          //members above rank 4 are "potential" raiders
+          wowapi.getCharacterItems(guild.members[i].character.name).success(pushRowdata);
+        }
       }
     };
 

@@ -51,6 +51,10 @@
   color: #FF8000;
 }
 
+table tbody>tr>td.vert-align-mid {
+    vertical-align: middle;
+}
+
 body {
   padding-top: 70px;
 }
