@@ -271,7 +271,35 @@
     //   $scope.rowList.splice(index);
     //   console.log(index);
     // });
+    
+    // isEpicCtrl
+    $scope.customSelected = {};
+    wowapi.getCharacterItems("Batchat").success(function(response) {
+      $scope.customSelected = response;
+    });
 
+    // $scope.gearList = rosterFactory.getRoster();
+
+    $scope.getEpic = function(data) {
+      var qual = "poor";
+      if (data == 1) {
+        qual = "common";
+      } else if (data == 2) {
+        qual = "uncommon";
+      } else if (data == 3) {
+        qual = "rare";
+      } else if (data == 4) {
+        qual = "epic";
+      } else if (data == 5) {
+        qual = "legendary";
+      }
+      return qual;
+    };
+    
+    $scope.getClass = function(data) {
+      return wowapi.getClassColor(data);
+    };
+    
   }
 
   app.controller("raiderCtrl", raiderCtrl);

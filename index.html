@@ -7,15 +7,15 @@
   <meta charset="utf-8" />
   <title>The Big Bad Theory</title>
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="style.css">
 
   <script data-require="angular.js@1.4.0" src="https://code.angularjs.org/1.4.0/angular.js" data-semver="1.4.0"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js"></script>
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
 
-  <script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
+  <script type="text/javascript" src="https://static.wowhead.com/widgets/power.js"></script>
   <script>
     var wowhead_tooltips = {
       "colorlinks": true,
@@ -33,16 +33,25 @@
 
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container" ng-init="isCollapsed=true">
+      <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <a class="navbar-brand" href="#/">The Big Bad Theory</a>
+        <button type="button" class="navbar-toggle" ng-click="isCollapsed=!isCollapsed">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
       </div>
-      <ul class="nav navbar-nav">
-        <li><a href="#/isepic">isEpic</a></li>
-        <li><a href="#/raider">raider</a></li>
-        <li><a href="#/roster">roster</a></li>
-      </ul>
-    </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="navbar-collapse" collapse="isCollapsed">
+        <ul class="nav navbar-nav">
+          <li><a href="#/isepic" ng-click="isCollapsed=!isCollapsed">isEpic</a></li>
+          <li><a href="#/raider" ng-click="isCollapsed=!isCollapsed">raider</a></li>
+          <li><a href="#/roster" ng-click="isCollapsed=!isCollapsed">roster</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
   </nav>
 
   <!-- main content and injected views -->

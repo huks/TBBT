@@ -1,96 +1,11 @@
-<div class="container">
-  <div class="row">
-    <!-- raider -->
-    <div class="col-sm-8">
-      <div class="row">
-        <div class="col-sm-6">
-          <!-- Overview -->
-          <label>Overview</label>
-          <table class="table">
-            <tr>
-              <td>Tank</td>
-              <td>{{getTanksNum()}}</td>
-              <td>{{getTanksIlvl() | number:0}}</td>
-            </tr>
-            <tr>
-              <td>Healer</td>
-              <td>{{getHealersNum()}}</td>
-              <td>{{getHealersIlvl() | number:0}}</td>
-            </tr>
-            <tr>
-              <td>DPS</td>
-              <td>{{getDpsNum()}}</td>
-              <td>{{getDpsIlvl() | number:0}}</td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td>{{getRaidersNum()}}</td>
-              <td>{{getRaidersIlvl() | number:0}}</td>
-            </tr>
-          </table>
-          <!-- Tank -->
-          <label>Tank</label>
-          <table class="table borderless">
-            <tr data-ng-repeat="raider in tanks">
-              <td class="col-sm-10 vert-align-mid">
-                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
-              </td>
-              <td class="col-sm-2 text-center vert-align-mid">{{raider.json.items.averageItemLevel}}</td>
-            </tr>
-            <!-- <tr>
-              <td colspan="2">
-                <button class="btn btn-default btn-sm" ng-hide="tanks.length == 2" ng-click="removeTank()">Remove</button>
-                <button class="btn btn-default btn-sm" ng-hide="tanks.length == 3" ng-click="addNewTank()">Add</button>
-              </td>
-            </tr> -->
-          </table>
-          <!-- Healer -->
-          <label>Healer</label>
-          <table class="table borderless">
-            <tr data-ng-repeat="raider in healers">
-              <td class="col-sm-10 vert-align-mid">
-                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
-              </td>
-              <td class="col-sm-2 text-center vert-align-mid">{{raider.json.items.averageItemLevel}}</td>
-            </tr>
-            <!-- <tr>
-              <td colspan="2">
-                <button class="btn btn-default btn-sm" ng-hide="healers.length == 2" ng-click="removeHealer()">Remove</button>
-                <button class="btn btn-default btn-sm" ng-hide="healers.length == 5" ng-click="addNewHealer()">Add</button>
-              </td>
-            </tr> -->
-          </table>
-        </div>
-        <div class="col-sm-6">
-          <!-- DPS -->
-          <label>DPS</label>
-          <table class="table borderless">
-            <tr data-ng-repeat="raider in dps">
-              <td class="col-sm-10 vert-align-mid">
-                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
-              </td>
-              <td class="col-sm-2 text-center vert-align-mid">{{raider.json.items.averageItemLevel}}</td>
-            </tr>
-            <!-- <tr>
-              <td colspan="2">
-                <button class="btn btn-default btn-sm" ng-hide="dps.length == 2" ng-click="removeDps()">Remove</button>
-                <button class="btn btn-default btn-sm" ng-hide="dps.length == 13" ng-click="addNewDps()">Add</button>
-              </td>
-            </tr> -->
-          </table>
-        </div>
-      </div>
-    </div>
-    <!-- isEpic -->
-    <div class="col-sm-4">
-      <div class="form-group">
-    <input type="text" ng-model="customSelected" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}" class="form-control">
+<div class="form-group">
+    <input type="text" ng-model="customSelected" typeahead="data as data.name for data in gearList | filter:{name:$viewValue}" class="form-control">
   </div>
   <table class="table">
     <tr>
-      <td class="col-sm-4">MAIN-HAND</td>
-      <td class="col-sm-2">{{customSelected.items.mainHand.itemLevel}}</td>
-      <td class="col-sm-6"><a ng-class="getEpic(customSelected.items.mainHand.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.mainHand.id}}">{{customSelected.items.mainHand.name}}</a></td>
+      <td>MAIN-HAND</td>
+      <td>{{customSelected.items.mainHand.itemLevel}}</td>
+      <td><a ng-class="getEpic(customSelected.items.mainHand.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.mainHand.id}}">{{customSelected.items.mainHand.name}}</a></td>
     </tr>
     <tr>
       <td>OFF-HAND</td>
@@ -168,6 +83,3 @@
       <td><a ng-class="getEpic(customSelected.items.trinket2.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.trinket2.id}}">{{customSelected.items.trinket2.name}}</a></td>
     </tr>
   </table>
-    </div>
-  </div>
-</div>

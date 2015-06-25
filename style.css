@@ -51,10 +51,14 @@
   color: #FF8000;
 }
 
-table tbody>tr>td.vert-align-mid {
-    vertical-align: middle;
-}
-
 body {
   padding-top: 70px;
+}
+
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+    border: none;
+}
+
+table tbody>tr>td.vert-align-mid {
+    vertical-align: middle;
 }
