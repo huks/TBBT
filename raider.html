@@ -9,33 +9,33 @@
           <table class="table">
             <tr>
               <td>Tank</td>
-              <td>{{getTanksNum()}}</td>
-              <td>{{getTanksIlvl() | number:0}}</td>
+              <td class="text-center">{{getTanksNum()}}</td>
+              <td class="text-center">{{getTanksIlvl() | number:0}}</td>
             </tr>
             <tr>
               <td>Healer</td>
-              <td>{{getHealersNum()}}</td>
-              <td>{{getHealersIlvl() | number:0}}</td>
+              <td class="text-center">{{getHealersNum()}}</td>
+              <td class="text-center">{{getHealersIlvl() | number:0}}</td>
             </tr>
             <tr>
               <td>DPS</td>
-              <td>{{getDpsNum()}}</td>
-              <td>{{getDpsIlvl() | number:0}}</td>
+              <td class="text-center">{{getDpsNum()}}</td>
+              <td class="text-center">{{getDpsIlvl() | number:0}}</td>
             </tr>
             <tr>
               <td>Total</td>
-              <td>{{getRaidersNum()}}</td>
-              <td>{{getRaidersIlvl() | number:0}}</td>
+              <td class="text-center">{{getRaidersNum()}}</td>
+              <td class="col-sm-2 text-center">{{getRaidersIlvl() | number:0}}</td>
             </tr>
           </table>
           <!-- Tank -->
           <label>Tank</label>
-          <table class="table borderless">
+          <table class="table borderless" style="border-top: 1px solid #ddd;">
             <tr data-ng-repeat="raider in tanks">
-              <td class="col-sm-10 vert-align-mid">
-                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
+              <td class="col-sm-10">
+                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control text-black" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
               </td>
-              <td class="col-sm-2 text-center vert-align-mid">{{raider.json.items.averageItemLevel}}</td>
+              <td class="col-sm-2 text-center" style="vertical-align: middle;">{{raider.json.items.averageItemLevel}}</td>
             </tr>
             <!-- <tr>
               <td colspan="2">
@@ -46,12 +46,12 @@
           </table>
           <!-- Healer -->
           <label>Healer</label>
-          <table class="table borderless">
+          <table class="table borderless" style="border-top: 1px solid #ddd;">
             <tr data-ng-repeat="raider in healers">
-              <td class="col-sm-10 vert-align-mid">
-                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
+              <td class="col-sm-10">
+                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control text-black" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
               </td>
-              <td class="col-sm-2 text-center vert-align-mid">{{raider.json.items.averageItemLevel}}</td>
+              <td class="col-sm-2 text-center" style="vertical-align: middle;">{{raider.json.items.averageItemLevel}}</td>
             </tr>
             <!-- <tr>
               <td colspan="2">
@@ -64,12 +64,12 @@
         <div class="col-sm-6">
           <!-- DPS -->
           <label>DPS</label>
-          <table class="table borderless">
+          <table class="table borderless" style="border-top: 1px solid #ddd;">
             <tr data-ng-repeat="raider in dps">
-              <td class="col-sm-10 vert-align-mid">
-                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
+              <td class="col-sm-10">
+                <input ng-class="getClass(raider.json.class)" type="text" ng-model="raider.json" json="" class="form-control text-black" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
               </td>
-              <td class="col-sm-2 text-center vert-align-mid">{{raider.json.items.averageItemLevel}}</td>
+              <td class="col-sm-2 text-center" style="vertical-align: middle;">{{raider.json.items.averageItemLevel}}</td>
             </tr>
             <!-- <tr>
               <td colspan="2">
@@ -84,90 +84,90 @@
     <!-- isEpic -->
     <div class="col-sm-4">
       <div class="form-group">
-    <input type="text" ng-model="customSelected" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}" class="form-control">
-  </div>
-  <table class="table">
-    <tr>
-      <td class="col-sm-4">MAIN-HAND</td>
-      <td class="col-sm-2">{{customSelected.items.mainHand.itemLevel}}</td>
-      <td class="col-sm-6"><a ng-class="getEpic(customSelected.items.mainHand.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.mainHand.id}}">{{customSelected.items.mainHand.name}}</a></td>
-    </tr>
-    <tr>
-      <td>OFF-HAND</td>
-      <td>{{customSelected.items.offHand.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.offHand.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.offHand.id}}">{{customSelected.items.offHand.name}}</a></td>
-    </tr>
-    <tr>
-      <td>HEAD</td>
-      <td>{{customSelected.items.head.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.head.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.head.id}}">{{customSelected.items.head.name}}</a></td>
-    </tr>
-    <tr>
-      <td>NECK</td>
-      <td>{{customSelected.items.neck.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.neck.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.neck.id}}">{{customSelected.items.neck.name}}</a></td>
-    </tr>
-    <tr>
-      <td>SHOULDER</td>
-      <td>{{customSelected.items.shoulder.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.shoulder.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.shoulder.id}}">{{customSelected.items.shoulder.name}}</a></td>
-    </tr>
-    <tr>
-      <td>BACK</td>
-      <td>{{customSelected.items.back.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.back.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.back.id}}">{{customSelected.items.back.name}}</a></td>
-    </tr>
-    <tr>
-      <td>CHEST</td>
-      <td>{{customSelected.items.chest.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.chest.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.chest.id}}">{{customSelected.items.chest.name}}</a></td>
-    </tr>
-    <tr>
-      <td>WRIST</td>
-      <td>{{customSelected.items.wrist.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.wrist.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.wrist.id}}">{{customSelected.items.wrist.name}}</a></td>
-    </tr>
-    <tr>
-      <td>HANDS</td>
-      <td>{{customSelected.items.hands.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.hands.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.hands.id}}">{{customSelected.items.hands.name}}</a></td>
-    </tr>
-    <tr>
-      <td>WAIST</td>
-      <td>{{customSelected.items.waist.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.waist.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.waist.id}}">{{customSelected.items.waist.name}}</a></td>
-    </tr>
-    <tr>
-      <td>LEGS</td>
-      <td>{{customSelected.items.legs.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.legs.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.legs.id}}">{{customSelected.items.legs.name}}</a></td>
-    </tr>
-    <tr>
-      <td>FEET</td>
-      <td>{{customSelected.items.feet.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.feet.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.feet.id}}">{{customSelected.items.feet.name}}</a></td>
-    </tr>
-    <tr>
-      <td>FINGER1</td>
-      <td>{{customSelected.items.finger1.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.finger1.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.finger1.id}}">{{customSelected.items.finger1.name}}</a></td>
-    </tr>
-    <tr>
-      <td>FINGER2</td>
-      <td>{{customSelected.items.finger2.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.finger2.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.finger2.id}}">{{customSelected.items.finger2.name}}</a></td>
-    </tr>
-    <tr>
-      <td>TRINKET1</td>
-      <td>{{customSelected.items.trinket1.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.trinket1.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.trinket1.id}}">{{customSelected.items.trinket1.name}}</a></td>
-    </tr>
-    <tr>
-      <td>TRINKET2</td>
-      <td>{{customSelected.items.trinket2.itemLevel}}</td>
-      <td><a ng-class="getEpic(customSelected.items.trinket2.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.trinket2.id}}">{{customSelected.items.trinket2.name}}</a></td>
-    </tr>
-  </table>
+        <input type="text" ng-model="customSelected" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}" class="form-control">
+      </div>
+      <table class="table">
+        <tr>
+          <td class="col-sm-4">MAIN-HAND</td>
+          <td class="col-sm-2">{{customSelected.items.mainHand.itemLevel}}</td>
+          <td class="col-sm-6"><a ng-class="getEpic(customSelected.items.mainHand.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.mainHand.id}}">{{customSelected.items.mainHand.name}}</a></td>
+        </tr>
+        <tr>
+          <td>OFF-HAND</td>
+          <td>{{customSelected.items.offHand.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.offHand.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.offHand.id}}">{{customSelected.items.offHand.name}}</a></td>
+        </tr>
+        <tr>
+          <td>HEAD</td>
+          <td>{{customSelected.items.head.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.head.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.head.id}}">{{customSelected.items.head.name}}</a></td>
+        </tr>
+        <tr>
+          <td>NECK</td>
+          <td>{{customSelected.items.neck.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.neck.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.neck.id}}">{{customSelected.items.neck.name}}</a></td>
+        </tr>
+        <tr>
+          <td>SHOULDER</td>
+          <td>{{customSelected.items.shoulder.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.shoulder.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.shoulder.id}}">{{customSelected.items.shoulder.name}}</a></td>
+        </tr>
+        <tr>
+          <td>BACK</td>
+          <td>{{customSelected.items.back.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.back.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.back.id}}">{{customSelected.items.back.name}}</a></td>
+        </tr>
+        <tr>
+          <td>CHEST</td>
+          <td>{{customSelected.items.chest.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.chest.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.chest.id}}">{{customSelected.items.chest.name}}</a></td>
+        </tr>
+        <tr>
+          <td>WRIST</td>
+          <td>{{customSelected.items.wrist.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.wrist.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.wrist.id}}">{{customSelected.items.wrist.name}}</a></td>
+        </tr>
+        <tr>
+          <td>HANDS</td>
+          <td>{{customSelected.items.hands.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.hands.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.hands.id}}">{{customSelected.items.hands.name}}</a></td>
+        </tr>
+        <tr>
+          <td>WAIST</td>
+          <td>{{customSelected.items.waist.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.waist.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.waist.id}}">{{customSelected.items.waist.name}}</a></td>
+        </tr>
+        <tr>
+          <td>LEGS</td>
+          <td>{{customSelected.items.legs.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.legs.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.legs.id}}">{{customSelected.items.legs.name}}</a></td>
+        </tr>
+        <tr>
+          <td>FEET</td>
+          <td>{{customSelected.items.feet.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.feet.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.feet.id}}">{{customSelected.items.feet.name}}</a></td>
+        </tr>
+        <tr>
+          <td>FINGER1</td>
+          <td>{{customSelected.items.finger1.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.finger1.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.finger1.id}}">{{customSelected.items.finger1.name}}</a></td>
+        </tr>
+        <tr>
+          <td>FINGER2</td>
+          <td>{{customSelected.items.finger2.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.finger2.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.finger2.id}}">{{customSelected.items.finger2.name}}</a></td>
+        </tr>
+        <tr>
+          <td>TRINKET1</td>
+          <td>{{customSelected.items.trinket1.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.trinket1.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.trinket1.id}}">{{customSelected.items.trinket1.name}}</a></td>
+        </tr>
+        <tr>
+          <td>TRINKET2</td>
+          <td>{{customSelected.items.trinket2.itemLevel}}</td>
+          <td><a ng-class="getEpic(customSelected.items.trinket2.quality)" ng-href="http://www.wowhead.com/item={{customSelected.items.trinket2.id}}">{{customSelected.items.trinket2.name}}</a></td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>

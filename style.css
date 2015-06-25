@@ -56,9 +56,9 @@ body {
 }
 
 .borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
-    border: none;
+  border: none;
 }
 
-table tbody>tr>td.vert-align-mid {
-    vertical-align: middle;
+.text-black {
+  color: #000000;
 }
