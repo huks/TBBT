@@ -1,8 +1,64 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.deathknight {
+  background-color: #C41F3B;
+}
+.druid {
+  background-color: #FF7D0A;
+}
+.hunter {
+  background-color: #ABD473;
+}
+.mage {
+  background-color: #69CCF0;
+}
+.monk {
+  background-color: #00FF96;
+}
+.paladin {
+  background-color: #F58CBA;
+}
+.priest {
+  background-color: #FFFFFF;
+}
+.rogue {
+  background-color: #FFF569;
+}
+.shaman {
+  background-color: #0070DE;
+}
+.warlock {
+  background-color: #9482C9;
+}
+.warrior {
+  background-color: #C79C6E;
 }
 
-a {
-  color: #00B7FF;
+.poor, .poor:hover {
+  color: #9D9D9D;
+}
+.common, .common:hover {
+  color: #FFFFFF;
+}
+.uncommon, .uncommon:hover {
+  color: #1EFF00;
+}
+.rare, .rare:hover {
+  color: #0070DD;
+}
+.epic, .epic:hover {
+  color: #A335EE;
+}
+.legendary, .legendary:hover {
+  color: #FF8000;
+}
+
+body {
+  padding-top: 70px;
+}
+
+.borderless tbody tr td, .borderless tbody tr th, .borderless thead tr th {
+  border: none;
+}
+
+.text-black {
+  color: #000000;
 }
