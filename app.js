@@ -8,7 +8,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://huks:czwlhwhv@ds053310.mongolab.com:53310/heroku_czwlhwhv')
 
-require('./models/Raiders.js');
+require('./models/Raiders');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');

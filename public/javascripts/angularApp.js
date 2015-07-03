@@ -6,9 +6,9 @@
     '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
       $stateProvider
-        .state('raider', {
-          url: '/raider',
-          templateUrl: '/raider.html',
+        .state('raiders', {
+          url: '/raiders',
+          templateUrl: '/raiders.html',
           controller: 'RaiderCtrl'
         })
         .state('roster', {
@@ -17,7 +17,7 @@
           controller: 'RosterCtrl'
         });
 
-      $urlRouterProvider.otherwise('raider');
+      $urlRouterProvider.otherwise('raiders');
   }]);
   
 }());
