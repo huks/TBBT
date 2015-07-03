@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 
   <script src="//code.angularjs.org/1.4.0/angular.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
   <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.js"></script>
 
   <script type="text/javascript" src="//static.wowhead.com/widgets/power.js"></script>
@@ -25,7 +25,6 @@
 
   <script src="/javascripts/angularApp.js"></script>
   <script src="/javascripts/wowapi.js"></script>
-  <script src="/javascripts/isEpicCtrl.js"></script>
   <script src="/javascripts/raiderCtrl.js"></script>
   <script src="/javascripts/rosterCtrl.js"></script>
 </head>
@@ -45,7 +44,6 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="navbar-collapse" collapse="isCollapsed">
         <ul class="nav navbar-nav">
-          <li><a href="#/isepic" ng-click="isCollapsed=!isCollapsed">isEpic</a></li>
           <li><a href="#/raider" ng-click="isCollapsed=!isCollapsed">raider</a></li>
           <li><a href="#/roster" ng-click="isCollapsed=!isCollapsed">roster</a></li>
         </ul>
@@ -55,7 +53,7 @@
 
   <!-- main content and injected views -->
   <div id="main">
-    <div ng-view></div>
+    <div ui-view></div>
   </div>
 
 </body>

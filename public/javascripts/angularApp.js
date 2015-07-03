@@ -1,23 +1,23 @@
 (function() {
-  var app = angular.module("tbbtApp", ["ngRoute", "ui.bootstrap"]);
+  var app = angular.module('tbbtApp', ['ui.router', 'ui.bootstrap']);
 
-  app.config(function($routeProvider) {
-  $routeProvider
-    .when("/isepic", {
-      templateUrl: "isEpic.html",
-      controller: "isEpicCtrl"
-    })
-    .when("/raider", {
-      templateUrl: "raider.html",
-      controller: "raiderCtrl"
-    })
-    .when("/roster", {
-      templateUrl: "roster.html",
-      controller: "rosterCtrl"
-    })
-    .otherwise({
-      redirectTo: "/raider"
-    });
-  });
-  
+  app.config([
+    '$stateProvider',
+    '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+      $stateProvider
+        .state('raider', {
+          url: '/raider',
+          templateUrl: '/raider.html',
+          controller: 'RaiderCtrl'
+        })
+        .state('roster', {
+          url: '/roster',
+          templateUrl: '/roster.html',
+          controller: 'RosterCtrl'
+        });
+
+      $urlRouterProvider.otherwise('raider');
+  }]);
+
 }());

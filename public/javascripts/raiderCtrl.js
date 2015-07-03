@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module("tbbtApp");
+  var app = angular.module('tbbtApp');
 
   var raiderCtrl = function($scope, rosterFactory, wowapi) {
 
@@ -13,11 +13,11 @@
     var pushRaiderData = function(name, role) {
       wowapi.getCharacterItems(name).success(function(response) {
         if (response.level == 100 && response.items.averageItemLevel >= 640) {
-          if (role == "TANK") {
+          if (role == 'TANK') {
             tankList.push(response);
-          } else if (role == "HEALING") {
+          } else if (role == 'HEALING') {
             healerList.push(response);
-          } else if (role == "DPS") {
+          } else if (role == 'DPS') {
             dpsList.push(response);
           }
         }
@@ -44,18 +44,18 @@
 
     // Tank
     $scope.tanks = [{
-      id: "raider1"
+      id: 'raider1'
     }, {
-      id: "raider2"
+      id: 'raider2'
     }, {
-      id: "raider3"
+      id: 'raider3'
     }];
 
     $scope.addNewTank = function() {
       if ($scope.tanks.length < 3) {
         var newRaiderNo = $scope.tanks.length + 1;
         $scope.tanks.push({
-          id: "raider" + newRaiderNo
+          id: 'raider' + newRaiderNo
         });
       }
     };
@@ -68,7 +68,7 @@
     };
 
     $scope.getTanksNum = function() {
-      var nullStr = "";
+      var nullStr = '';
       var num = 0;
 
       for (i = 0; i < $scope.tanks.length; i++) {
@@ -104,22 +104,22 @@
 
     // Healer
     $scope.healers = [{
-      id: "raider1"
+      id: 'raider1'
     }, {
-      id: "raider2"
+      id: 'raider2'
     }, {
-      id: "raider3"
+      id: 'raider3'
     }, {
-      id: "raider4"
+      id: 'raider4'
     }, {
-      id: "raider5"
+      id: 'raider5'
     }];
 
     $scope.addNewHealer = function() {
       if ($scope.healers.length < 5) {
         var newRaiderNo = $scope.healers.length + 1;
         $scope.healers.push({
-          id: "raider" + newRaiderNo
+          id: 'raider' + newRaiderNo
         });
       }
     };
@@ -132,7 +132,7 @@
     };
 
     $scope.getHealersNum = function() {
-      var nullStr = "";
+      var nullStr = '';
       var num = 0;
 
       for (i = 0; i < $scope.healers.length; i++) {
@@ -168,38 +168,38 @@
 
     // DPS
     $scope.dps = [{
-      id: "raider1"
+      id: 'raider1'
     }, {
-      id: "raider2"
+      id: 'raider2'
     }, {
-      id: "raider3"
+      id: 'raider3'
     }, {
-      id: "raider4"
+      id: 'raider4'
     }, {
-      id: "raider5"
+      id: 'raider5'
     }, {
-      id: "raider6"
+      id: 'raider6'
     }, {
-      id: "raider7"
+      id: 'raider7'
     }, {
-      id: "raider8"
+      id: 'raider8'
     }, {
-      id: "raider9"
+      id: 'raider9'
     }, {
-      id: "raider10"
+      id: 'raider10'
     }, {
-      id: "raider11"
+      id: 'raider11'
     }, {
-      id: "raider12"
+      id: 'raider12'
     }, {
-      id: "raider13"
+      id: 'raider13'
     }];
 
     $scope.addNewDps = function() {
       if ($scope.dps.length < 13) {
         var newRaiderNo = $scope.dps.length + 1;
         $scope.dps.push({
-          id: "raider" + newRaiderNo
+          id: 'raider' + newRaiderNo
         });
       }
     };
@@ -212,7 +212,7 @@
     };
 
     $scope.getDpsNum = function() {
-      var nullStr = "";
+      var nullStr = '';
       var num = 0;
 
       for (i = 0; i < $scope.dps.length; i++) {
@@ -274,24 +274,24 @@
     
     // isEpicCtrl
     $scope.customSelected = {};
-    wowapi.getCharacterItems("Batchat").success(function(response) {
+    wowapi.getCharacterItems('Batchat').success(function(response) {
       $scope.customSelected = response;
     });
 
     // $scope.gearList = rosterFactory.getRoster();
 
     $scope.getEpic = function(data) {
-      var qual = "poor";
+      var qual = 'poor';
       if (data == 1) {
-        qual = "common";
+        qual = 'common';
       } else if (data == 2) {
-        qual = "uncommon";
+        qual = 'uncommon';
       } else if (data == 3) {
-        qual = "rare";
+        qual = 'rare';
       } else if (data == 4) {
-        qual = "epic";
+        qual = 'epic';
       } else if (data == 5) {
-        qual = "legendary";
+        qual = 'legendary';
       }
       return qual;
     };
@@ -302,6 +302,6 @@
     
   }
 
-  app.controller("raiderCtrl", raiderCtrl);
+  app.controller('RaiderCtrl', raiderCtrl);
 
 }());

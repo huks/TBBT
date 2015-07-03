@@ -1,5 +1,5 @@
 (function() {
-  var app = angular.module("tbbtApp");
+  var app = angular.module('tbbtApp');
 
   // Factory
   var rosterFactory = function(wowapi) {
@@ -34,7 +34,7 @@
     };
   }
 
-  app.factory("rosterFactory", rosterFactory);
+  app.factory('rosterFactory', rosterFactory);
 
   // Controller
   var rosterCtrl = function($scope, rosterFactory, wowapi) {
@@ -43,9 +43,9 @@
 
     $scope.rosterFilter = function(data) {
       if (data < 655) {
-        return "warning"
+        return 'warning'
       } else {
-        return ""
+        return ''
       }
     }
 
@@ -55,6 +55,6 @@
 
   }
 
-  app.controller("rosterCtrl", rosterCtrl);
+  app.controller('RosterCtrl', rosterCtrl);
 
 }());
