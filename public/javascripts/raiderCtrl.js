@@ -273,7 +273,7 @@
     // });
     
     // isEpicCtrl
-    $scope.customSelected = {};
+    $scope.customSelected = [];
     wowapi.getCharacterItems('Batchat').success(function(response) {
       $scope.customSelected = response;
     });

@@ -19,5 +19,5 @@
 
       $urlRouterProvider.otherwise('raider');
   }]);
-
+  
 }());
