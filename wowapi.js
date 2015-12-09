@@ -2,7 +2,7 @@
     var app = angular.module("tbbtApp");
 
     var realm = "Frostmourne";
-    var guildName = "The Big Bad Theory";
+    var guildName = "The Ruins of Orgrimmar";
     var apiKey = "998b45vfwkxvg6ftz5vurk8z789daq37";
 
     var wowapi = function($http) {
