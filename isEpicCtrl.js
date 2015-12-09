@@ -4,7 +4,7 @@
   var isEpicCtrl = function($scope, rosterFactory, wowapi) {
 
     $scope.customSelected = {};
-    wowapi.getCharacterItems("Batchat").success(function(response) {
+    wowapi.getCharacterItems("Infiniti").success(function(response) {
       $scope.customSelected = response;
     });
 
