@@ -1,8 +1,8 @@
 (function() {
     var app = angular.module("tbbtApp");
 
-    var realm = "Frostmourne";
-    var guildName = "The Ruins of Orgrimmar";
+    var realm = "Nagrand";
+    var guildName = "DTD";
     var apiKey = "998b45vfwkxvg6ftz5vurk8z789daq37";
 
     var wowapi = function($http) {
