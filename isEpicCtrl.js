@@ -1,11 +1,15 @@
 (function() {
   var app = angular.module("tbbtApp");
 
-  var isEpicCtrl = function($scope, rosterFactory, wowapi) {
+  var isEpicCtrl = function($scope, $cookieStore, rosterFactory, wowapi) {
 
+    $scope.ngClick = function(param) {
+      $cookieStore.put("is_epic_cookie", param);
+    };
+  
     $scope.customSelected = {};
-    wowapi.getCharacterItems("Infiniti").success(function(response) {
-      $scope.customSelected = response;
+    wowapi.getCharacterItems($cookieStore.get("is_epic_cookie")).success(function(response) {
+      $scope.customSelected = response;      
     });
 
     $scope.gearList = rosterFactory.getRoster();

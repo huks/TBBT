@@ -14,10 +14,10 @@
 
     var createRoster = function(guild) {
       for (i = 0; i < guild.members.length; i++) {
-        if (guild.members[i].rank < 4) {
+        // if (guild.members[i].rank < 4) { // commented out because Kaltoe wants to be a raider!!
           //members above rank 4 are "potential" raiders
           wowapi.getCharacterItems(guild.members[i].character.name).success(pushRowdata);
-        }
+        // }
       }
     };
 

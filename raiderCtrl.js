@@ -274,7 +274,7 @@
     
     // isEpicCtrl
     $scope.customSelected = {};
-    wowapi.getCharacterItems("Infiniti").success(function(response) {
+    wowapi.getCharacterItems("Kaltoe").success(function(response) {
       $scope.customSelected = response;
     });
 

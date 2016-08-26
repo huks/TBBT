@@ -1,5 +1,10 @@
 (function() {
-  var app = angular.module("tbbtApp", ["ngRoute", "ui.bootstrap"]);
+  /**
+   * ngRoute: Provides routing and deeplinking services and directives
+   * ngCookies: cookies!!
+   * ui.boostrap: pretty!!
+   */
+  var app = angular.module("tbbtApp", ["ngRoute", "ngCookies", "ui.bootstrap"]);  
   
   app.config(function($routeProvider) {
   $routeProvider
