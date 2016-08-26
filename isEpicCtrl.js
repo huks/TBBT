@@ -8,7 +8,7 @@
     };
   
     $scope.customSelected = {};
-    wowapi.getCharacterItems($cookieStore.get("is_epic_cookie")).success(function(response) {
+    wowapi.getCharacterItems($cookieStore.get("is_epic_cookie") || "ARE YOU EPIC?").success(function(response) {
       $scope.customSelected = response;      
     });
 
