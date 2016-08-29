@@ -1,71 +1,16 @@
 (function() {
   var app = angular.module("tbbtApp");
 
-  var raiderCtrl = function($scope, rosterFactory, wowapi) {
+  var raiderCtrl = function($scope, $cookieStore, rosterFactory, wowapi) {
 
     $scope.rowList = rosterFactory.getRoster();
-
-    // Raider
-    var tankList = [];
-    var healerList = [];
-    var dpsList = [];
-
-    var pushRaiderData = function(name, role) {
-      wowapi.getCharacterItems(name).success(function(response) {
-        if (response.level == 100 && response.items.averageItemLevel >= 640) {
-          if (role == "TANK") {
-            tankList.push(response);
-          } else if (role == "HEALING") {
-            healerList.push(response);
-          } else if (role == "DPS") {
-            dpsList.push(response);
-          }
-        }
-      });
-    }
-
-    var createRaider = function(guild) {
-      for (i = 0; i < guild.members.length; i++) {
-        if (guild.members[i].rank < 4) {
-          var name = guild.members[i].character.name;
-          var role = guild.members[i].character.spec.role;
-          pushRaiderData(name, role);
-        }
-      }
-    }
-
-    var getRaider = function() {
-      tankList = [];
-      healerList = [];
-      dpsList = [];
-      wowapi.getGuildMembers().success(createRaider);
-      return tankList;
-    }
 
     // Tank
     $scope.tanks = [{
       id: "raider1"
     }, {
       id: "raider2"
-    }, {
-      id: "raider3"
     }];
-
-    $scope.addNewTank = function() {
-      if ($scope.tanks.length < 3) {
-        var newRaiderNo = $scope.tanks.length + 1;
-        $scope.tanks.push({
-          id: "raider" + newRaiderNo
-        });
-      }
-    };
-
-    $scope.removeTank = function() {
-      var lastRaider = $scope.tanks.length - 1;
-      if (lastRaider > 1) {
-        $scope.tanks.splice(lastRaider);
-      }
-    };
 
     $scope.getTanksNum = function() {
       var nullStr = "";
@@ -111,25 +56,7 @@
       id: "raider3"
     }, {
       id: "raider4"
-    }, {
-      id: "raider5"
     }];
-
-    $scope.addNewHealer = function() {
-      if ($scope.healers.length < 5) {
-        var newRaiderNo = $scope.healers.length + 1;
-        $scope.healers.push({
-          id: "raider" + newRaiderNo
-        });
-      }
-    };
-
-    $scope.removeHealer = function() {
-      var lastRaider = $scope.healers.length - 1;
-      if (lastRaider > 1) {
-        $scope.healers.splice(lastRaider);
-      }
-    };
 
     $scope.getHealersNum = function() {
       var nullStr = "";
@@ -185,31 +112,7 @@
       id: "raider8"
     }, {
       id: "raider9"
-    }, {
-      id: "raider10"
-    }, {
-      id: "raider11"
-    }, {
-      id: "raider12"
-    }, {
-      id: "raider13"
     }];
-
-    $scope.addNewDps = function() {
-      if ($scope.dps.length < 13) {
-        var newRaiderNo = $scope.dps.length + 1;
-        $scope.dps.push({
-          id: "raider" + newRaiderNo
-        });
-      }
-    };
-
-    $scope.removeDps = function() {
-      var lastRaider = $scope.dps.length - 1;
-      if (lastRaider > 1) {
-        $scope.dps.splice(lastRaider);
-      }
-    };
 
     $scope.getDpsNum = function() {
       var nullStr = "";
@@ -261,25 +164,13 @@
       return avg;
     }
 
-    // $scope.$watch('getRaidersNum()', function() {
-    //   // initRowList();
-    //   // $scope.rowList = rosterFactory.getRoster();
-    //   // var data = $scope.rowList;
-    //   var index = $scope.rowList.map(function(d) {
-    //     return d['name'];
-    //   }).indexOf('Kobuki');
-    //   $scope.rowList.splice(index);
-    //   console.log(index);
-    // });
-    
-    // isEpicCtrl
+    /* isEpicCtrl */
     $scope.customSelected = {};
     wowapi.getCharacterItems("Kaltoe").success(function(response) {
-      $scope.customSelected = response;
+      $scope.customSelected = response;     
     });
 
-    // $scope.gearList = rosterFactory.getRoster();
-
+    /* Wow Equipment Color Scheme */
     $scope.getEpic = function(data) {
       var qual = "poor";
       if (data == 1) {
@@ -296,8 +187,23 @@
       return qual;
     };
     
+    /* Wow Class Colcor Scheme */
     $scope.getClass = function(data) {
       return wowapi.getClassColor(data);
+    };
+
+    /*
+     * New "DTD" codes below
+     *
+     */
+
+    $scope.ngClick = function(param) {
+      console.log("foo: " + JSON.stringify(param));
+
+      //console.log("customSelected: " + $scope.customSelected.name);
+      //console.log("bar: " + param[0].json.name)
+      //console.log("bar: " + $scope.tanks[0].json.name);
+      //console.log("bar: " + $scope.rowList[0].name);
     };
     
   }

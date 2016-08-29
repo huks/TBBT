@@ -21,7 +21,7 @@
       controller: "rosterCtrl"
     })
     .otherwise({
-      redirectTo: "/raider"
+      redirectTo: "/isepic"
     });
   });
 }());

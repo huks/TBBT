@@ -4,11 +4,12 @@
   var isEpicCtrl = function($scope, $cookieStore, rosterFactory, wowapi) {
 
     $scope.ngClick = function(param) {
-      $cookieStore.put("is_epic_cookie", param);
+      $cookieStore.put("cookie_is_epic", param);
+      console.log(param + " IS NOW EPIC COOKIE!!");
     };
   
     $scope.customSelected = {};
-    wowapi.getCharacterItems($cookieStore.get("is_epic_cookie") || "Kaltoe").success(function(response) {
+    wowapi.getCharacterItems($cookieStore.get("cookie_is_epic") || "Kaltoe").success(function(response) {
       $scope.customSelected = response;      
     });
 
