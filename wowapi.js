@@ -1,13 +1,11 @@
 (function() {
     var app = angular.module("tbbtApp");
 
-    var realm = "Nagrand";
-    var guildName = "DTD";
     var apiKey = "998b45vfwkxvg6ftz5vurk8z789daq37";
 
     var wowapi = function($http) {
 
-        var getGuildMembers = function() {
+        var getGuildMembers = function(realm, guildName) {
           console.log("getGuildMembers is called.");
           return $http.get("https://us.api.battle.net/wow/guild/" + realm + "/" + guildName + "?fields=members&locale=en_US&apikey=" + apiKey)
             .success(function(response) {
@@ -15,9 +13,9 @@
             });
         };
 
-        var getCharacterItems = function(name) {
-          //console.log("getCharacterItems is called.");
-          return $http.get("https://us.api.battle.net/wow/character/" + realm + "/" + name + "?fields=items&locale=en_US&apikey=" + apiKey)
+        var getCharacterItems = function(realm, characterName) {
+          //console.log("getCharacterItems is called: " + name);
+          return $http.get("https://us.api.battle.net/wow/character/" + realm + "/" + characterName + "?fields=items&locale=en_US&apikey=" + apiKey)
             .success(function(response) {
               return response;
             });

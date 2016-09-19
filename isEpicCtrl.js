@@ -4,19 +4,26 @@
   var isEpicCtrl = function($scope, $cookieStore, rosterFactory, wowapi) {
 
     $scope.ngClick = function(param) {
-      $cookieStore.put("cookie_is_epic", param);
-      console.log(param + " IS NOW EPIC COOKIE!!");
+      $cookieStore.put("isepic_realm", param.realm);
+      $cookieStore.put("isepic_charactername", param.name);
+      console.log(param.name + " IS NOW EPIC COOKIE!!");
     };
   
     $scope.customSelected = {};
-    wowapi.getCharacterItems($cookieStore.get("cookie_is_epic") || "Kaltoe").success(function(response) {
-      $scope.customSelected = response;      
-    });
+    wowapi.getCharacterItems
+      (
+      $cookieStore.get("isepic_realm") || "Nagrand",
+      $cookieStore.get("isepic_charactername") || "Kaltoe"
+      ).success(function(response)
+        {
+          $scope.customSelected = response;      
+        }
+      );
 
     $scope.gearList = rosterFactory.getRoster();
 
     $scope.getEpic = function(data) {
-      var qual = "common";
+      var qual = "else";
       if (data === 0) {
         qual = "poor"
       } else if (data == 1) {
@@ -29,6 +36,10 @@
         qual = "epic"
       } else if (data == 5) {
         qual = "legendary"
+      } else if (data == 6) {
+        qual = "artifact"
+      } else {
+        qual = "else"
       }
       return qual;
     }

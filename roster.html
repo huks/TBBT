@@ -25,7 +25,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="row in roster | orderBy : 'items.averageItemLevel' : true">
-        <td ng-class="getClass(row.class)" class="text-right text-uppercase">{{ row.name }}</td>
+        <td ng-class="getClass(row.class)" class="text-right">{{ row.name }} - {{ row.realm }}</td>
         <td ng-class="rosterFilter(row.items.averageItemLevel)" class="text-center">{{ row.items.averageItemLevel }}</td>
         <td class="text-center">{{ row.items.averageItemLevelEquipped }}</td>
         <td class="text-center">{{ row.items.mainHand.itemLevel }}</td>

@@ -17,17 +17,19 @@
     };
 
     var createRoster = function(guild) {
+      console.log("createRoster is called: " + guild.name);
       for (i = 0; i < guild.members.length; i++) {
-        // if (guild.members[i].rank < 4) { // commented out because Kaltoe wants to be a raider!!
-          //members above rank 4 are "potential" raiders
-          wowapi.getCharacterItems(guild.members[i].character.name).success(pushRowdata);
-        // }
+        wowapi.getCharacterItems(guild.realm, guild.members[i].character.name).success(pushRowdata);
       }
     };
 
     var getRoster = function() {
-      roster = []; // init...
-      wowapi.getGuildMembers().success(createRoster);
+      console.log("getRoster is called...");
+      /* checking if object is empty */
+      if (Object.keys(roster).length == 0) {
+        wowapi.getGuildMembers("Nagrand", "DTD").success(createRoster);
+        wowapi.getGuildMembers("Dreadmaul", "Raid Warning").success(createRoster);
+      }      
       return roster;
     };
 

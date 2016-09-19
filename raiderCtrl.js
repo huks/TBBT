@@ -5,12 +5,64 @@
 
     $scope.rowList = rosterFactory.getRoster();
 
-    // Tank
-    $scope.tanks = [{
-      id: "raider1"
-    }, {
-      id: "raider2"
-    }];
+    $scope.ngClick = function(tanks, healers, dealers) {
+      /* Tank Cookies */
+      for (var i = 0; i < num_of_tanks; i++) {
+        if (!tanks[i].json.name || !tanks[i].json.items.averageItemLevel) {
+          $cookieStore.remove("tank_"+[i]+"_name");
+          $cookieStore.remove("tank_"+[i]+"_class");
+          $cookieStore.remove("tank_"+[i]+"_items_averageItemLevel");          
+        } else {
+          $cookieStore.put("tank_"+[i]+"_name", tanks[i].json.name);
+          $cookieStore.put("tank_"+[i]+"_class", tanks[i].json.class);
+          $cookieStore.put("tank_"+[i]+"_items_averageItemLevel", tanks[i].json.items.averageItemLevel);
+        }        
+      }
+      /* Healer Cookies */
+      for (var i = 0; i < num_of_healers; i++) {
+        if (!healers[i].json.name || !healers[i].json.items.averageItemLevel) {
+          $cookieStore.remove("healer_"+[i]+"_name");
+          $cookieStore.remove("healer_"+[i]+"_class");
+          $cookieStore.remove("healer_"+[i]+"_items_averageItemLevel");   
+        } else {
+          $cookieStore.put("healer_"+[i]+"_name", healers[i].json.name);
+          $cookieStore.put("healer_"+[i]+"_class", healers[i].json.class);
+          $cookieStore.put("healer_"+[i]+"_items_averageItemLevel", healers[i].json.items.averageItemLevel);
+        }        
+      }
+      /* Dealer Cookies */
+      for (var i = 0; i < num_of_dealers; i++) {
+        if (!dealers[i].json.name || !dealers[i].json.items.averageItemLevel) {
+          $cookieStore.remove("dealer_"+[i]+"_name");
+          $cookieStore.remove("dealer_"+[i]+"_class");
+          $cookieStore.remove("dealer_"+[i]+"_items_averageItemLevel");   
+        } else {
+          $cookieStore.put("dealer_"+[i]+"_name", dealers[i].json.name);
+          $cookieStore.put("dealer_"+[i]+"_class", dealers[i].json.class);
+          $cookieStore.put("dealer_"+[i]+"_items_averageItemLevel", dealers[i].json.items.averageItemLevel);
+        }        
+      }
+    };    
+
+    /* Tank Codes */
+
+    var num_of_tanks = 2;
+    
+    $scope.tanks = [];
+    
+    for (var i = 0; i < num_of_tanks; i++) {
+      var tank = {
+        id: "tank"+[i],
+        json: {
+          name: $cookieStore.get("tank_"+[i]+"_name") || "",
+          class: $cookieStore.get("tank_"+[i]+"_class") || "",
+          items: {
+            averageItemLevel: $cookieStore.get("tank_"+[i]+"_items_averageItemLevel") || ""
+          }
+        }
+      };
+      $scope.tanks.push(tank);
+    } 
 
     $scope.getTanksNum = function() {
       var nullStr = "";
@@ -47,16 +99,25 @@
       }
     }
 
-    // Healer
-    $scope.healers = [{
-      id: "raider1"
-    }, {
-      id: "raider2"
-    }, {
-      id: "raider3"
-    }, {
-      id: "raider4"
-    }];
+    /* Healer Codes */
+
+    var num_of_healers = 4;
+    
+    $scope.healers = [];
+    
+    for (var i = 0; i < num_of_healers; i++) {
+      var healer = {
+        id: "healer"+[i],
+        json: {
+          name: $cookieStore.get("healer_"+[i]+"_name") || "",
+          class: $cookieStore.get("healer_"+[i]+"_class") || "",
+          items: {
+            averageItemLevel: $cookieStore.get("healer_"+[i]+"_items_averageItemLevel") || ""
+          }
+        }
+      };
+      $scope.healers.push(healer);
+    } 
 
     $scope.getHealersNum = function() {
       var nullStr = "";
@@ -93,34 +154,34 @@
       }
     }
 
-    // DPS
-    $scope.dps = [{
-      id: "raider1"
-    }, {
-      id: "raider2"
-    }, {
-      id: "raider3"
-    }, {
-      id: "raider4"
-    }, {
-      id: "raider5"
-    }, {
-      id: "raider6"
-    }, {
-      id: "raider7"
-    }, {
-      id: "raider8"
-    }, {
-      id: "raider9"
-    }];
+    /* Dealer Codes */
 
-    $scope.getDpsNum = function() {
+    var num_of_dealers = 9;
+    
+    $scope.dealers = [];
+    
+    for (var i = 0; i < num_of_dealers; i++) {
+      var dealer = {
+        id: "dealer"+[i],
+        json: {
+          name: $cookieStore.get("dealer_"+[i]+"_name") || "",
+          class: $cookieStore.get("dealer_"+[i]+"_class") || "",
+          items: {
+            averageItemLevel: $cookieStore.get("dealer_"+[i]+"_items_averageItemLevel") || ""
+          }
+        }
+      };
+      $scope.dealers.push(dealer);
+    } 
+
+
+    $scope.getDealersNum = function() {
       var nullStr = "";
       var num = 0;
 
-      for (i = 0; i < $scope.dps.length; i++) {
+      for (i = 0; i < $scope.dealers.length; i++) {
         try {
-          if ($scope.dps[i].json.items.averageItemLevel != nullStr) {
+          if ($scope.dealers[i].json.items.averageItemLevel != nullStr) {
             num++
           }
         } catch (error) {
@@ -130,14 +191,14 @@
       return num;
     }
 
-    $scope.getDpsIlvl = function() {
-      var length = $scope.getDpsNum();
+    $scope.getDealersIlvl = function() {
+      var length = $scope.getDealersNum();
       var sum = 0;
       var avg = 0;
       if (length !== 0) {
-        for (i = 0; i < $scope.dps.length; i++) {
+        for (i = 0; i < $scope.dealers.length; i++) {
           try {
-            sum += $scope.dps[i].json.items.averageItemLevel;
+            sum += $scope.dealers[i].json.items.averageItemLevel;
           } catch (error) {
             // error
           }
@@ -152,40 +213,46 @@
     // Total
     $scope.getRaidersNum = function() {
       var num = 0;
-      num = $scope.getTanksNum() + $scope.getHealersNum() + $scope.getDpsNum();
+      num = $scope.getTanksNum() + $scope.getHealersNum() + $scope.getDealersNum();
       return num;
     }
 
     $scope.getRaidersIlvl = function() {
       var avg = 0;
       if ($scope.getRaidersNum() !== 0) {
-        avg = ($scope.getTanksIlvl() * $scope.getTanksNum() + $scope.getHealersIlvl() * $scope.getHealersNum() + $scope.getDpsIlvl() * $scope.getDpsNum()) / $scope.getRaidersNum();
+        avg = ($scope.getTanksIlvl() * $scope.getTanksNum() + $scope.getHealersIlvl() * $scope.getHealersNum() + $scope.getDealersIlvl() * $scope.getDealersNum()) / $scope.getRaidersNum();
       }
       return avg;
     }
 
     /* isEpicCtrl */
     $scope.customSelected = {};
-    wowapi.getCharacterItems("Kaltoe").success(function(response) {
+    wowapi.getCharacterItems("Nagrand", "Kaltoe").success(function(response) {
       $scope.customSelected = response;     
     });
 
     /* Wow Equipment Color Scheme */
     $scope.getEpic = function(data) {
-      var qual = "poor";
-      if (data == 1) {
-        qual = "common";
+      var qual = "else";
+      if (data === 0) {
+        qual = "poor"
+      } else if (data == 1) {
+        qual = "common"
       } else if (data == 2) {
-        qual = "uncommon";
+        qual = "uncommon"
       } else if (data == 3) {
-        qual = "rare";
+        qual = "rare"
       } else if (data == 4) {
-        qual = "epic";
+        qual = "epic"
       } else if (data == 5) {
-        qual = "legendary";
+        qual = "legendary"
+      } else if (data == 6) {
+        qual = "artifact"
+      } else {
+        qual = "else"
       }
       return qual;
-    };
+    }
     
     /* Wow Class Colcor Scheme */
     $scope.getClass = function(data) {
@@ -197,15 +264,6 @@
      *
      */
 
-    $scope.ngClick = function(param) {
-      console.log("foo: " + JSON.stringify(param));
-
-      //console.log("customSelected: " + $scope.customSelected.name);
-      //console.log("bar: " + param[0].json.name)
-      //console.log("bar: " + $scope.tanks[0].json.name);
-      //console.log("bar: " + $scope.rowList[0].name);
-    };
-    
   }
 
   app.controller("raiderCtrl", raiderCtrl);

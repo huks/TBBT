@@ -53,6 +53,12 @@
 .legendary, .legendary:hover {
   color: #FF8000;
 }
+.artifact, .artifact:hover {
+  color: #e6cc80;
+}
+.else, .else:hover {
+  color: #000000;
+}
 
 body {
   padding-top: 70px;

@@ -18,9 +18,9 @@
               <td class="text-center">{{getHealersIlvl() | number:0}}</td>
             </tr>
             <tr>
-              <td>DPS</td>
-              <td class="text-center">{{getDpsNum()}}</td>
-              <td class="text-center">{{getDpsIlvl() | number:0}}</td>
+              <td>Dealer</td>
+              <td class="text-center">{{getDealersNum()}}</td>
+              <td class="text-center">{{getDealersIlvl() | number:0}}</td>
             </tr>
             <tr>
               <td>Total</td>
@@ -37,12 +37,6 @@
               </td>
               <td class="col-sm-2 text-center" style="vertical-align: middle;">{{tank.json.items.averageItemLevel}}</td>
             </tr>
-            <!-- <tr>
-              <td colspan="2">
-                <button class="btn btn-default btn-sm" ng-hide="tanks.length == 2" ng-click="removeTank()">Remove</button>
-                <button class="btn btn-default btn-sm" ng-hide="tanks.length == 3" ng-click="addNewTank()">Add</button>
-              </td>
-            </tr> -->
           </table>
           <!-- Healer -->
           <label>Healer</label>
@@ -53,30 +47,18 @@
               </td>
               <td class="col-sm-2 text-center" style="vertical-align: middle;">{{healer.json.items.averageItemLevel}}</td>
             </tr>
-            <!-- <tr>
-              <td colspan="2">
-                <button class="btn btn-default btn-sm" ng-hide="healers.length == 2" ng-click="removeHealer()">Remove</button>
-                <button class="btn btn-default btn-sm" ng-hide="healers.length == 5" ng-click="addNewHealer()">Add</button>
-              </td>
-            </tr> -->
           </table>
         </div>
         <div class="col-sm-6">
-          <!-- DPS -->
-          <label>DPS</label>
+          <!-- Dealer -->
+          <label>Dealer</label>
           <table class="table borderless" style="border-top: 1px solid #ddd;">
-            <tr data-ng-repeat="dealer in dps">
+            <tr data-ng-repeat="dealer in dealers">
               <td class="col-sm-10">
                 <input ng-class="getClass(dealer.json.class)" type="text" ng-model="dealer.json" json="" class="form-control text-black" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}">
               </td>
               <td class="col-sm-2 text-center" style="vertical-align: middle;">{{dealer.json.items.averageItemLevel}}</td>
             </tr>
-            <!-- <tr>
-              <td colspan="2">
-                <button class="btn btn-default btn-sm" ng-hide="dps.length == 2" ng-click="removeDps()">Remove</button>
-                <button class="btn btn-default btn-sm" ng-hide="dps.length == 13" ng-click="addNewDps()">Add</button>
-              </td>
-            </tr> -->
           </table>
         </div>
       </div>
@@ -172,6 +154,6 @@
     </div>
   </div>
 
-  <button type="button" class="btn btn-primary" ng-click="ngClick(tanks)">SAVE ME BRO</button>
+  <button type="button" class="btn btn-primary" ng-click="ngClick(tanks, healers, dealers)">SAVE ME BRO</button>
 
 </div>
