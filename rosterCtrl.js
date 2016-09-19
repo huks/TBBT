@@ -7,7 +7,11 @@
     var roster = [];
 
     var pushRowdata = function(rowdata) {
-      if (rowdata.level == 100 && rowdata.items.averageItemLevel >= 640) {
+      /*
+       * characer max level for the legion expansion is 110.
+       * preferred ilvl is 825+.
+       */
+      if (rowdata.level == 110 && rowdata.items.averageItemLevel >= 825) {
         roster.push(rowdata);
       }
     };
