@@ -45,7 +45,7 @@
           } else if (data == 11) {
             return "druid"
           } else if (data == 12) {
-            return "demon_hunter" 
+            return "demonhunter" 
           } else {
             //console.log("Undefined WoW Class: " + data);
             return "else"

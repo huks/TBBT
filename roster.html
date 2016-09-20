@@ -1,50 +1,68 @@
 <div class="container-fluid">
-  <table class="table table-hover" vertical-align="middle">
-    <thead>
-      <tr>
-        <th class="text-right">NAME</th>
-        <th class="text-center">IN-BAG</th>
-        <th class="text-center">EQUIPPED</th>
-        <th class="text-center">MAIN-HAND</th>
-        <th class="text-center">OFF-HAND</th>
-        <th class="text-center">HEAD</th>
-        <th class="text-center">NECK</th>
-        <th class="text-center">SHOULDER</th>
-        <th class="text-center">BACK</th>
-        <th class="text-center">CHEST</th>
-        <th class="text-center">WRIST</th>
-        <th class="text-center">HANDS</th>
-        <th class="text-center">WAIST</th>
-        <th class="text-center">LEGS</th>
-        <th class="text-center">FEET</th>
-        <th class="text-center">FINGER1</th>
-        <th class="text-center">FINGER2</th>
-        <th class="text-center">TRINKET1</th>
-        <th class="text-center">TRINKET2</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="row in roster | orderBy : 'items.averageItemLevel' : true">
-        <td ng-class="getClass(row.class)" class="text-right">{{ row.name }} - {{ row.realm }}</td>
-        <td ng-class="rosterFilter(row.items.averageItemLevel)" class="text-center">{{ row.items.averageItemLevel }}</td>
-        <td class="text-center">{{ row.items.averageItemLevelEquipped }}</td>
-        <td class="text-center">{{ row.items.mainHand.itemLevel }}</td>
-        <td class="text-center">{{ row.items.offHand.itemLevel }}</td>
-        <td class="text-center">{{ row.items.head.itemLevel }}</td>
-        <td class="text-center">{{ row.items.neck.itemLevel }}</td>
-        <td class="text-center">{{ row.items.shoulder.itemLevel }}</td>
-        <td class="text-center">{{ row.items.back.itemLevel }}</td>
-        <td class="text-center">{{ row.items.chest.itemLevel }}</td>
-        <td class="text-center">{{ row.items.wrist.itemLevel }}</td>
-        <td class="text-center">{{ row.items.hands.itemLevel }}</td>
-        <td class="text-center">{{ row.items.waist.itemLevel }}</td>
-        <td class="text-center">{{ row.items.legs.itemLevel }}</td>
-        <td class="text-center">{{ row.items.feet.itemLevel }}</td>
-        <td class="text-center">{{ row.items.finger1.itemLevel }}</td>
-        <td class="text-center">{{ row.items.finger2.itemLevel }}</td>
-        <td class="text-center">{{ row.items.trinket1.itemLevel }}</td>
-        <td class="text-center">{{ row.items.trinket2.itemLevel }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row text-center" style="background-color: #333333">
+    <!-- <p class="text-center">{{getRosterStatistics()}}</p> -->
+    <span ng-style="warriorStyle">{{numClass(1)}}</span>
+    <span ng-style="paladinStyle">{{numClass(2)}}</span>
+    <span ng-style="hunterStyle">{{numClass(3)}}</span>
+    <span ng-style="rogueStyle">{{numClass(4)}}</span>
+    <span ng-style="priestStyle">{{numClass(5)}}</span>
+    <span ng-style="deathknightStyle">{{numClass(6)}}</span>
+    <span ng-style="shamanStyle">{{numClass(7)}}</span>
+    <span ng-style="mageStyle">{{numClass(8)}}</span>
+    <span ng-style="warlockStyle">{{numClass(9)}}</span>
+    <span ng-style="monkStyle">{{numClass(10)}}</span>
+    <span ng-style="druidStyle">{{numClass(11)}}</span>
+    <span ng-style="demonhunterStyle">{{numClass(12)}}</span>
+  </div>
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <table class="table table-hover" vertical-align="middle">
+      <thead>
+        <tr>
+          <th class="text-right">NAME</th>
+          <th class="text-center">IN-BAG</th>
+          <th class="text-center">EQUIPPED</th>
+          <th class="text-center">MAIN-HAND</th>
+          <th class="text-center">OFF-HAND</th>
+          <th class="text-center">HEAD</th>
+          <th class="text-center">NECK</th>
+          <th class="text-center">SHOULDER</th>
+          <th class="text-center">BACK</th>
+          <th class="text-center">CHEST</th>
+          <th class="text-center">WRIST</th>
+          <th class="text-center">HANDS</th>
+          <th class="text-center">WAIST</th>
+          <th class="text-center">LEGS</th>
+          <th class="text-center">FEET</th>
+          <th class="text-center">FINGER1</th>
+          <th class="text-center">FINGER2</th>
+          <th class="text-center">TRINKET1</th>
+          <th class="text-center">TRINKET2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in roster | orderBy : 'items.averageItemLevel' : true">
+          <td ng-class="getClass(row.class)" class="text-right">{{ row.name }} - {{ row.realm }}</td>
+          <td ng-class="rosterFilter(row.items.averageItemLevel)" class="text-center">{{ row.items.averageItemLevel }}</td>
+          <td class="text-center">{{ row.items.averageItemLevelEquipped }}</td>
+          <td class="text-center">{{ row.items.mainHand.itemLevel }}</td>
+          <td class="text-center">{{ row.items.offHand.itemLevel }}</td>
+          <td class="text-center">{{ row.items.head.itemLevel }}</td>
+          <td class="text-center">{{ row.items.neck.itemLevel }}</td>
+          <td class="text-center">{{ row.items.shoulder.itemLevel }}</td>
+          <td class="text-center">{{ row.items.back.itemLevel }}</td>
+          <td class="text-center">{{ row.items.chest.itemLevel }}</td>
+          <td class="text-center">{{ row.items.wrist.itemLevel }}</td>
+          <td class="text-center">{{ row.items.hands.itemLevel }}</td>
+          <td class="text-center">{{ row.items.waist.itemLevel }}</td>
+          <td class="text-center">{{ row.items.legs.itemLevel }}</td>
+          <td class="text-center">{{ row.items.feet.itemLevel }}</td>
+          <td class="text-center">{{ row.items.finger1.itemLevel }}</td>
+          <td class="text-center">{{ row.items.finger2.itemLevel }}</td>
+          <td class="text-center">{{ row.items.trinket1.itemLevel }}</td>
+          <td class="text-center">{{ row.items.trinket2.itemLevel }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>   
 </div>
