@@ -1,30 +1,33 @@
 (function() {
   var app = angular.module("tbbtApp");
 
-  // Factory
+  /* Roster Factory */
   var rosterFactory = function(wowapi) {
     
     var roster = [];
 
     var pushRowdata = function(rowdata) {
-      /*
-       * characer max level for the legion expansion is 110.
-       * preferred ilvl is 825+.
-       */
-      if (rowdata.level == 110 && rowdata.items.averageItemLevel >= 825) {
+      /* minimum ilvl for the raider is 810. */
+      if (rowdata.items.averageItemLevel >= 810) {
         roster.push(rowdata);
       }
     };
 
     var createRoster = function(guild) {
-      console.log("createRoster is called: " + guild.name);
+      //console.log("createRoster is called: " + guild.name);
       for (i = 0; i < guild.members.length; i++) {
-        wowapi.getCharacterItems(guild.realm, guild.members[i].character.name).success(pushRowdata);
+        /* characer max level for the legion expansion is 110. */
+        if (guild.members[i].character.level == 110) {
+          wowapi.getCharacterItems(guild.realm, guild.members[i].character.name).success(pushRowdata);
+        }        
       }
     };
 
-    var getRoster = function() {
-      console.log("getRoster is called...");
+    var getRoster = function(init) {
+      //console.log("getRoster is called.");
+      if (init == 0) {
+        roster = [];
+      }
       /* checking if object is empty */
       if (Object.keys(roster).length == 0) {
         wowapi.getGuildMembers("Nagrand", "DTD").success(createRoster);
@@ -42,13 +45,14 @@
 
   app.factory("rosterFactory", rosterFactory);
 
-  // Controller
+  /* Roster Controller */
   var rosterCtrl = function($scope, rosterFactory, wowapi) {
 
-    $scope.roster = rosterFactory.getRoster();
+    $scope.roster = rosterFactory.getRoster(0);
 
     $scope.rosterFilter = function(data) {
-      if (data < 655) {
+      if (data < 825) {
+        /* preferred ilvl for the emerald nightmare raid is 825+. */
         return "warning"
       } else {
         return ""

@@ -3,7 +3,7 @@
 
   var raiderCtrl = function($scope, $cookieStore, rosterFactory, wowapi) {
 
-    $scope.rowList = rosterFactory.getRoster();
+    $scope.rowList = rosterFactory.getRoster(1);
 
     $scope.ngClick = function(tanks, healers, dealers) {
       /* Tank Cookies */
@@ -84,7 +84,7 @@
       var length = $scope.getTanksNum();
       var sum = 0;
       var avg = 0;
-      if (length !== 0) {
+      if (length != 0) {
         for (i = 0; i < $scope.tanks.length; i++) {
           try {
             sum += $scope.tanks[i].json.items.averageItemLevel;
@@ -139,7 +139,7 @@
       var length = $scope.getHealersNum();
       var sum = 0;
       var avg = 0;
-      if (length !== 0) {
+      if (length != 0) {
         for (i = 0; i < $scope.healers.length; i++) {
           try {
             sum += $scope.healers[i].json.items.averageItemLevel;
@@ -195,7 +195,7 @@
       var length = $scope.getDealersNum();
       var sum = 0;
       var avg = 0;
-      if (length !== 0) {
+      if (length != 0) {
         for (i = 0; i < $scope.dealers.length; i++) {
           try {
             sum += $scope.dealers[i].json.items.averageItemLevel;
@@ -219,7 +219,7 @@
 
     $scope.getRaidersIlvl = function() {
       var avg = 0;
-      if ($scope.getRaidersNum() !== 0) {
+      if ($scope.getRaidersNum() != 0) {
         avg = ($scope.getTanksIlvl() * $scope.getTanksNum() + $scope.getHealersIlvl() * $scope.getHealersNum() + $scope.getDealersIlvl() * $scope.getDealersNum()) / $scope.getRaidersNum();
       }
       return avg;
@@ -233,26 +233,8 @@
 
     /* Wow Equipment Color Scheme */
     $scope.getEpic = function(data) {
-      var qual = "else";
-      if (data === 0) {
-        qual = "poor"
-      } else if (data == 1) {
-        qual = "common"
-      } else if (data == 2) {
-        qual = "uncommon"
-      } else if (data == 3) {
-        qual = "rare"
-      } else if (data == 4) {
-        qual = "epic"
-      } else if (data == 5) {
-        qual = "legendary"
-      } else if (data == 6) {
-        qual = "artifact"
-      } else {
-        qual = "else"
-      }
-      return qual;
-    }
+      return wowapi.getEpic(data);
+    };
     
     /* Wow Class Colcor Scheme */
     $scope.getClass = function(data) {
@@ -261,7 +243,6 @@
 
     /*
      * New "DTD" codes below
-     *
      */
 
   }

@@ -1,8 +1,8 @@
 (function() {
   /**
    * ngRoute: Provides routing and deeplinking services and directives
-   * ngCookies: cookies!!
-   * ui.boostrap: pretty!!
+   * ngCookies: ngCookie
+   * ui.boostrap: ui.bootstrap
    */
   var app = angular.module("tbbtApp", ["ngRoute", "ngCookies", "ui.bootstrap"]);  
   

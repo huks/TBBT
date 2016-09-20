@@ -6,7 +6,7 @@
     var wowapi = function($http) {
 
         var getGuildMembers = function(realm, guildName) {
-          console.log("getGuildMembers is called.");
+          //console.log("getGuildMembers("+realm+", "+guildName+") is called.");
           return $http.get("https://us.api.battle.net/wow/guild/" + realm + "/" + guildName + "?fields=members&locale=en_US&apikey=" + apiKey)
             .success(function(response) {
               return response;
@@ -14,7 +14,7 @@
         };
 
         var getCharacterItems = function(realm, characterName) {
-          //console.log("getCharacterItems is called: " + name);
+          //console.log("getCharacterItems("+realm+", "+characterName+") is called." + name);
           return $http.get("https://us.api.battle.net/wow/character/" + realm + "/" + characterName + "?fields=items&locale=en_US&apikey=" + apiKey)
             .success(function(response) {
               return response;
@@ -22,7 +22,6 @@
         };
         
         var getClassColor = function(data) {
-          //console.log("getClassColor is called.");
           if (data == 1) {
             return "warrior"
           } else if (data == 2) {
@@ -52,11 +51,33 @@
             return "else"
           }
         };
+
+        var getEpic = function(data) {
+          if (data == 0) {
+            qual = "poor"
+          } else if (data == 1) {
+            qual = "common"
+          } else if (data == 2) {
+            qual = "uncommon"
+          } else if (data == 3) {
+            qual = "rare"
+          } else if (data == 4) {
+            qual = "epic"
+          } else if (data == 5) {
+            qual = "legendary"
+          } else if (data == 6) {
+            qual = "artifact"
+          } else {
+            qual = "else"
+          }
+          return qual;
+        };
         
         return {
           getGuildMembers: getGuildMembers,
           getCharacterItems: getCharacterItems,
-          getClassColor: getClassColor
+          getClassColor: getClassColor,
+          getEpic: getEpic
         };
     };
     
