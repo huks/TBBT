@@ -1,8 +1,8 @@
 (function() {
   /**
-   * ngRoute: Provides routing and deeplinking services and directives
-   * ngCookies: ngCookie
-   * ui.boostrap: ui.bootstrap
+   * ngRoute: provides routing and deeplinking services and directives
+   * ngCookies: for reading and writing browser cookies
+   * ui.boostrap: Bootstrap's markup and CSS
    */
   var app = angular.module("tbbtApp", ["ngRoute", "ngCookies", "ui.bootstrap"]);  
   
@@ -21,7 +21,7 @@
       controller: "rosterCtrl"
     })
     .otherwise({
-      redirectTo: "/isepic"
+      redirectTo: "/roster"
     });
   });
 }());

@@ -30,6 +30,7 @@
       }
       /* checking if object is empty */
       if (Object.keys(roster).length == 0) {
+        //console.log("roster is empty, creating roster...");
         wowapi.getGuildMembers("Nagrand", "DTD").success(createRoster);
         wowapi.getGuildMembers("Dreadmaul", "Raid Warning").success(createRoster);
       }      
@@ -48,7 +49,7 @@
   /* Roster Controller */
   var rosterCtrl = function($scope, rosterFactory, wowapi) {
 
-    $scope.roster = rosterFactory.getRoster(0);
+    $scope.roster = rosterFactory.getRoster(1); // 0: init load, 1: just load
 
     $scope.rosterFilter = function(data) {
       if (data < 825) {

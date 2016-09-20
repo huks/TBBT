@@ -67,7 +67,7 @@
     <!-- isEpic -->
     <div class="col-sm-4">
       <div class="form-group">
-        <input type="text" ng-model="customSelected" typeahead="data as data.name for data in rowList | filter:{name:$viewValue}" class="form-control">
+        <input type="text" ng-model="customSelected" typeahead="data as data.name+'-'+data.realm for data in rowList | filter:{name:$viewValue}" class="form-control">
       </div>
       <table class="table">
         <tr>

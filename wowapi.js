@@ -20,6 +20,13 @@
               return response;
             });
         };
+
+        var getCharacterTalents = function(realm, characterName) {
+          return $http.get("https://us.api.battle.net/wow/character/" + realm + "/" + characterName + "?fields=talents&locale=en_US&apikey=" + apiKey)
+            .success(function(response) {
+              return response;
+            });
+        };
         
         var getClassColor = function(data) {
           if (data == 1) {
@@ -76,6 +83,7 @@
         return {
           getGuildMembers: getGuildMembers,
           getCharacterItems: getCharacterItems,
+          getCharacterTalents: getCharacterTalents,
           getClassColor: getClassColor,
           getEpic: getEpic
         };

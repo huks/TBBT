@@ -6,10 +6,10 @@
     $scope.ngClick = function(param) {
       $cookieStore.put("isepic_realm", param.realm);
       $cookieStore.put("isepic_charactername", param.name);
-      console.log(param.name + " IS NOW EPIC COOKIE!!");
     };
   
     $scope.customSelected = {};
+
     wowapi.getCharacterItems
     (
       $cookieStore.get("isepic_realm") || "Nagrand",
