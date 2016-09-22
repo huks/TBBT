@@ -1,38 +1,133 @@
 .deathknight {
   background-color: #C41F3B;
 }
+.table-hover > tbody > tr > td.deathknight:hover,
+.table-hover > tbody > tr > th.deathknight:hover,
+.table-hover > tbody > tr.deathknight:hover > td,
+.table-hover > tbody > tr:hover > .deathknight,
+.table-hover > tbody > tr.deathknight:hover > th {
+  background-color: #a71a32;
+}
+
 .demonhunter {
   background-color: #A330C9;
 }
+.table-hover > tbody > tr > td.demonhunter:hover,
+.table-hover > tbody > tr > th.demonhunter:hover,
+.table-hover > tbody > tr.demonhunter:hover > td,
+.table-hover > tbody > tr:hover > .demonhunter,
+.table-hover > tbody > tr.demonhunter:hover > th {
+  background-color: #8b29ac;
+}
+
 .druid {
   background-color: #FF7D0A;
 }
+.table-hover > tbody > tr > td.druid:hover,
+.table-hover > tbody > tr > th.druid:hover,
+.table-hover > tbody > tr.druid:hover > td,
+.table-hover > tbody > tr:hover > .druid,
+.table-hover > tbody > tr.druid:hover > th {
+  background-color: #da6b07;
+}
+
 .hunter {
   background-color: #ABD473;
 }
+.table-hover > tbody > tr > td.hunter:hover,
+.table-hover > tbody > tr > th.hunter:hover,
+.table-hover > tbody > tr.hunter:hover > td,
+.table-hover > tbody > tr:hover > .hunter,
+.table-hover > tbody > tr.hunter:hover > th {
+  background-color: #92b562;
+}
+
 .mage {
   background-color: #69CCF0;
 }
+.table-hover > tbody > tr > td.mage:hover,
+.table-hover > tbody > tr > th.mage:hover,
+.table-hover > tbody > tr.mage:hover > td,
+.table-hover > tbody > tr:hover > .mage,
+.table-hover > tbody > tr.mage:hover > th {
+  background-color: #5aaecd;
+}
+
 .monk {
   background-color: #00FF96;
 }
+.table-hover > tbody > tr > td.monk:hover,
+.table-hover > tbody > tr > th.monk:hover,
+.table-hover > tbody > tr.monk:hover > td,
+.table-hover > tbody > tr:hover > .monk,
+.table-hover > tbody > tr.monk:hover > th {
+  background-color: #00da80;
+}
+
 .paladin {
   background-color: #F58CBA;
 }
+.table-hover > tbody > tr > td.paladin:hover,
+.table-hover > tbody > tr > th.paladin:hover,
+.table-hover > tbody > tr.paladin:hover > td,
+.table-hover > tbody > tr:hover > .paladin,
+.table-hover > tbody > tr.paladin:hover > th {
+  background-color: #d1789f;
+}
+
 .priest {
   background-color: #FFFFFF;
 }
+.table-hover > tbody > tr > td.priest:hover,
+.table-hover > tbody > tr > th.priest:hover,
+.table-hover > tbody > tr.priest:hover > td,
+.table-hover > tbody > tr:hover > .priest,
+.table-hover > tbody > tr.priest:hover > th {
+  background-color: #f5f5f5;
+}
+
 .rogue {
   background-color: #FFF569;
 }
+.table-hover > tbody > tr > td.rogue:hover,
+.table-hover > tbody > tr > th.rogue:hover,
+.table-hover > tbody > tr.rogue:hover > td,
+.table-hover > tbody > tr:hover > .rogue,
+.table-hover > tbody > tr.rogue:hover > th {
+  background-color: #dad15a;
+}
+
 .shaman {
   background-color: #0070DE;
 }
+.table-hover > tbody > tr > td.shaman:hover,
+.table-hover > tbody > tr > th.shaman:hover,
+.table-hover > tbody > tr.shaman:hover > td,
+.table-hover > tbody > tr:hover > .shaman,
+.table-hover > tbody > tr.shaman:hover > th {
+  background-color: #0060be;
+}
+
 .warlock {
   background-color: #9482C9;
 }
+.table-hover > tbody > tr > td.warlock:hover,
+.table-hover > tbody > tr > th.warlock:hover,
+.table-hover > tbody > tr.warlock:hover > td,
+.table-hover > tbody > tr:hover > .warlock,
+.table-hover > tbody > tr.warlock:hover > th {
+  background-color: #7e6fac;
+}
+
 .warrior {
   background-color: #C79C6E;
+}
+.table-hover > tbody > tr > td.warrior:hover,
+.table-hover > tbody > tr > th.warrior:hover,
+.table-hover > tbody > tr.warrior:hover > td,
+.table-hover > tbody > tr:hover > .warrior,
+.table-hover > tbody > tr.warrior:hover > th {
+  background-color: #aa855e;
 }
 
 .poor, .poor:hover {
