@@ -9,7 +9,12 @@
     var pushRowdata = function(rowdata) {
       /* minimum ilvl for the raider is 810. */
       if (rowdata.items.averageItemLevel >= 810) {
-        roster.push(rowdata);
+        wowapi.getCharacterTalents(rowdata.realm, rowdata.name).success(function(response)
+        {
+          rowdata.talents = response.talents; // add new "talents" property to WoW JSON object
+          //console.log(rowdata);
+          roster.push(rowdata);
+        });        
       }
     };
 
@@ -175,6 +180,15 @@
     //   return rosterStat;
     // };
 
+    $scope.getCurrentTalents = function(talents) {
+      /* talent: customSelected.talents); */
+      return wowapi.getCurrentTalents(talents);
+    };
+
+    $scope.getArtifact = function(artifact) {
+      /* artifcat: customSelected.items.mainHand */
+      return wowapi.getArtifact(artifact);
+    };
   }
 
   app.controller("rosterCtrl", rosterCtrl);

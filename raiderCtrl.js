@@ -245,6 +245,11 @@
      * New "DTD" codes below
      */
 
+    $scope.getCurrentTalents = function(talents) {
+      /* talent: customSelected.talents); */
+      return wowapi.getCurrentTalents(talents);
+    };
+
   }
 
   app.controller("raiderCtrl", raiderCtrl);

@@ -79,13 +79,47 @@
           }
           return qual;
         };
+
+        var getCurrentTalents = function(data) {
+          /* data: customSelected.talents */
+          if (data != null) {
+            var obj_length = Object.keys(data).length;
+          } else {
+            // error
+          }
+
+          for (var i = 0 ; i < obj_length ; i++) {
+            if (data[i].selected) {
+              return data[i].spec.name + " " + data[i].spec.role;
+            }
+          }
+        };
+
+        var getArtifact = function(data) {
+          /* data: customSelected.items.mainHand */
+          var num_rank = 0;
+
+          if (data != null && data.artifactTraits != null) {
+            var traits_length = Object.keys(data.artifactTraits).length;
+          } else {
+            // error
+          }
+
+          for (var i = 0 ; i < traits_length ; i++) {
+            num_rank += data.artifactTraits[i].rank;
+          }
+
+          return num_rank;
+        }
         
         return {
           getGuildMembers: getGuildMembers,
           getCharacterItems: getCharacterItems,
           getCharacterTalents: getCharacterTalents,
           getClassColor: getClassColor,
-          getEpic: getEpic
+          getEpic: getEpic,
+          getCurrentTalents: getCurrentTalents,
+          getArtifact: getArtifact
         };
     };
     

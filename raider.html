@@ -13,12 +13,12 @@
               <td class="text-center">{{getTanksIlvl() | number:0}}</td>
             </tr>
             <tr>
-              <td>Healer</td>
+              <td>Healing</td>
               <td class="text-center">{{getHealersNum()}}</td>
               <td class="text-center">{{getHealersIlvl() | number:0}}</td>
             </tr>
             <tr>
-              <td>Dealer</td>
+              <td>DPS</td>
               <td class="text-center">{{getDealersNum()}}</td>
               <td class="text-center">{{getDealersIlvl() | number:0}}</td>
             </tr>
@@ -39,7 +39,7 @@
             </tr>
           </table>
           <!-- Healer -->
-          <label>Healer</label>
+          <label>Healing</label>
           <table class="table borderless" style="border-top: 1px solid #ddd;">
             <tr data-ng-repeat="healer in healers">
               <td class="col-sm-10">
@@ -51,7 +51,7 @@
         </div>
         <div class="col-sm-6">
           <!-- Dealer -->
-          <label>Dealer</label>
+          <label>DPS</label>
           <table class="table borderless" style="border-top: 1px solid #ddd;">
             <tr data-ng-repeat="dealer in dealers">
               <td class="col-sm-10">

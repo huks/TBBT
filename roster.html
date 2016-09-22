@@ -20,6 +20,7 @@
       <thead>
         <tr>
           <th class="text-right">NAME</th>
+          <th class="text-center">ARTIFACT</th> <!-- ARTIFACT -->
           <th class="text-center">IN-BAG</th>
           <th class="text-center">EQUIPPED</th>
           <th class="text-center">MAIN-HAND</th>
@@ -42,7 +43,8 @@
       </thead>
       <tbody>
         <tr ng-repeat="row in roster | orderBy : 'items.averageItemLevel' : true">
-          <td ng-class="getClass(row.class)" class="text-right">{{ row.name }} - {{ row.realm }}</td>
+          <td ng-class="getClass(row.class)" class="text-right">{{ row.name }} - {{ getCurrentTalents(row.talents) }}</td>
+          <td class="text-center">{{ getArtifact(row.items.mainHand) }}</td>
           <td ng-class="rosterFilter(row.items.averageItemLevel)" class="text-center">{{ row.items.averageItemLevel }}</td>
           <td class="text-center">{{ row.items.averageItemLevelEquipped }}</td>
           <td class="text-center">{{ row.items.mainHand.itemLevel }}</td>
