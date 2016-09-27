@@ -4,7 +4,9 @@
   /* Roster Factory */
   var rosterFactory = function(wowapi) {
     
-    var roster = [];
+    var roster = [];   
+    var data_guild = [];
+    var num_progress;
 
     var pushRowdata = function(rowdata) {
       /* minimum ilvl for the raider is 810. */
@@ -18,34 +20,81 @@
       }
     };
 
-    var createRoster = function(guild) {
-      //console.log("createRoster is called: " + guild.name);
-      for (i = 0; i < guild.members.length; i++) {
-        /* characer max level for the legion expansion is 110. */
-        if (guild.members[i].character.level == 110) {
-          wowapi.getCharacterItems(guild.realm, guild.members[i].character.name).success(pushRowdata);
-        }        
+    var onMemberSuccess = function(data_member) {
+      //console.log(data_member);
+      if (data_member.items.averageItemLevel >= 810 ) {
+        wowapi.getCharacterTalents(data_member.realm, data_member.name)
+        .success(function(response)
+        {
+          data_member.talents = response.talents;
+          roster.push(data_member);
+        });
+      }
+      num_progress++;
+      loadMember(data_guild);
+      if (num_progres == data.guild.members.length) {
+        callback;
       }
     };
 
-    var getRoster = function(init) {
-      //console.log("getRoster is called.");
+    var onMemberError = function(data) {
+      console.log("onMemberError");
+      num_progress++;
+      loadMember(data_guild);
+    };
+
+    var loadMember = function(data_guild) {
+      if (num_progress < data_guild.members.length) {
+        wowapi.getCharacterItems(data_guild.realm, data_guild.members[num_progress].character.name)
+        .then(onMemberSuccess, onMemberError);
+      }
+    };
+
+    var createRoster = function(response) {
+      console.log("createRoster is called: " + response.name);
+      num_progress = 0;
+      //data_guild = response;
+      for (var i=0; i<response.members.length; i++) {
+        data_guild.push(response.members[i]);
+      }
+      loadMember(response);
+    };
+
+    var getRoster = function(init) {      
+      var perf_a = performance.now();
+      
       if (init == 0) {
         roster = [];
       }
+
       /* checking if object is empty */
       if (Object.keys(roster).length == 0) {
         //console.log("roster is empty, creating roster...");
         wowapi.getGuildMembers("Nagrand", "DTD").success(createRoster);
-        wowapi.getGuildMembers("Dreadmaul", "Raid Warning").success(createRoster);
+        //calback...
+        //wowapi.getGuildMembers("Dreadmaul", "Raid Warning").success(createRoster);
       }      
+      
+      var perf_b = performance.now();
+      
+      console.log("getRoster() took " + (perf_b - perf_a) + " ms.");
+      
       return roster;
     };
 
+    var getProgress = function() {
+      //console.log("num_progress: " + num_progress);
+      return num_progress;
+    }
+
     return {
       pushRowdata: pushRowdata,
+      onMemberSuccess: onMemberSuccess,
+      onMemberError: onMemberError,
+      loadMember: loadMember,
       createRoster: createRoster,
-      getRoster: getRoster
+      getRoster: getRoster,
+      getProgress: getProgress
     };
   }
 
@@ -55,6 +104,10 @@
   var rosterCtrl = function($scope, rosterFactory, wowapi) {
 
     $scope.roster = rosterFactory.getRoster(1); // 0: init load, 1: just load
+
+    $scope.$watch(function() {
+      $scope.progress = rosterFactory.getProgress();
+    });
 
     $scope.rosterFilter = function(data) {
       if (data < 825) {

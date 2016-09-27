@@ -1,6 +1,5 @@
 <div class="container-fluid">
-  <div class="row text-center" style="background-color: #333333">
-    <!-- <p class="text-center">{{getRosterStatistics()}}</p> -->
+  <div class="row text-center" style="background-color: #333333">    
     <span ng-style="warriorStyle">{{numClass(1)}}</span>
     <span ng-style="paladinStyle">{{numClass(2)}}</span>
     <span ng-style="hunterStyle">{{numClass(3)}}</span>
@@ -14,7 +13,7 @@
     <span ng-style="druidStyle">{{numClass(11)}}</span>
     <span ng-style="demonhunterStyle">{{numClass(12)}}</span>
   </div>
-  <div class="row">&nbsp;</div>
+  <div class="row"><p class="text-center">progress: {{progress}}</p></div>
   <div class="row">
     <table class="table table-hover" vertical-align="middle">
       <thead>

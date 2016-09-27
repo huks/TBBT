@@ -16,8 +16,8 @@
         var getCharacterItems = function(realm, characterName) {
           //console.log("getCharacterItems("+realm+", "+characterName+") is called." + name);
           return $http.get("https://us.api.battle.net/wow/character/" + realm + "/" + characterName + "?fields=items&locale=en_US&apikey=" + apiKey)
-            .success(function(response) {
-              return response;
+            .then(function(response) {
+              return response.data;
             });
         };
 
